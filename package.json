@@ -1,0 +1,19 @@
+{
+  "name": "retrograde-rotation",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev-frontend": "astro dev",
+    "dev-backend": "bun run --watch apps/backend/src/index.ts",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.9.0",
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "packageManager": "bun@1.2.15"
+}
