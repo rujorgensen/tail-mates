@@ -1,0 +1,59 @@
+---
+// Test page for web components integration
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components Test</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .demo-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐕 Web Components Integration Test</h1>
+    
+    <div class="demo-section">
+        <h2>Button Components</h2>
+        <tm-button variant="primary">Primary Button</tm-button>
+        <tm-button variant="secondary">Secondary</tm-button>
+        <tm-button variant="outline">Outline</tm-button>
+    </div>
+
+    <div class="demo-section">
+        <h2>Card Component</h2>
+        <tm-card variant="elevated" padding="medium">
+            <div slot="header">Test Card</div>
+            <p>This card is rendered using the web components library!</p>
+            <div slot="footer">Footer content</div>
+        </tm-card>
+    </div>
+
+    <!-- Load web components - in a real app this would be bundled -->
+    <script type="module">
+        // For testing, we'll load from the built library
+        // In production, this would be imported through the build system
+        import('../../../libs/frontend/web-components/dist/index.js');
+        
+        console.log('Web components loaded in Astro!');
+        
+        // Test event handling
+        document.addEventListener('tm-click', (event) => {
+            console.log('Button clicked:', event.detail);
+        });
+    </script>
+</body>
+</html>

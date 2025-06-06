@@ -13,6 +13,7 @@ Tailmate is a social app for dog owners designed to make walk-time more social, 
 ## 🧱 Tech Stack
 
 - Frontend: Astro – Fast, content-focused frontend framework with partial hydration.
+  - UI Components: Custom Web Components library built with TypeScript.
 - Backend: Elysia – Lightweight and fast Bun-native web framework.
 - Runtime: Bun – Ultra-fast JavaScript runtime, package manager, and bundler.
 
@@ -23,15 +24,45 @@ Inside of your Astro project, you'll see the following folders and files:
 ```text
 /
 ├── apps/
-│   ├── frontend/
+│   ├── frontend/               # Frontend applications
 │   │   ├── public/
 │   │   └── src/
 │   │
-│   └── backend/
+│   └── backend/                # Backend applications
 │       └── src/
 │
+├── libs/
+│   └── frontend/
+│       └── web-components/     # Reusable UI components library
+│
+├── docs/                       # Documentation
 └── package.json
 ```
+
+## 📦 Libraries
+
+### Web Components
+
+The project includes a custom web components library (`@tail-mates/web-components`) that provides reusable UI components:
+
+- **TmButton**: Customizable button component with multiple variants and sizes
+- **TmCard**: Flexible card container with optional header and footer
+
+The components are built using native Web Components API with TypeScript for excellent developer experience and framework independence.
+
+**Usage:**
+```typescript
+import '@tail-mates/web-components';
+
+// Use in HTML
+<tm-button variant="primary" size="medium">Click me</tm-button>
+<tm-card variant="elevated">
+  <div slot="header">Title</div>
+  <p>Content goes here</p>
+</tm-card>
+```
+
+See [Web Components Documentation](./docs/web-components.md) for detailed usage instructions.
 
 ## Development
 
@@ -48,4 +79,5 @@ All commands are run from the root of the project, from a terminal:
 | :------------------------ | :----------------------------------------------- |
 | `bun install`             | Installs dependencies                            |
 | `bun dev-frontend`             | Starts local frontend dev server at `localhost:4321`      |
-| `bun dev-backend`           | Starts local backend dev server at `localhost:3000`      |
+| `bun dev-backend`           | Starts local backend dev server at `localhost:3000` |
+| `bun web-components:build`           | Build the web components library |

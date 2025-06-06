@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tail Mates Web Components Example</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: #f9fafb;
+    }
+    
+    .section {
+      margin: 2rem 0;
+    }
+    
+    .components-grid {
+      display: grid;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .button-examples {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    h1, h2 {
+      color: #111827;
+    }
+    
+    .code {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐕 Tail Mates Web Components</h1>
+  <p>This page demonstrates the custom web components library for the Tail Mates application.</p>
+
+  <div class="section">
+    <h2>TmButton Examples</h2>
+    
+    <h3>Variants</h3>
+    <div class="button-examples">
+      <tm-button variant="primary">Primary</tm-button>
+      <tm-button variant="secondary">Secondary</tm-button>
+      <tm-button variant="outline">Outline</tm-button>
+    </div>
+    
+    <h3>Sizes</h3>
+    <div class="button-examples">
+      <tm-button size="small">Small</tm-button>
+      <tm-button size="medium">Medium</tm-button>
+      <tm-button size="large">Large</tm-button>
+    </div>
+    
+    <h3>States</h3>
+    <div class="button-examples">
+      <tm-button variant="primary">Enabled</tm-button>
+      <tm-button variant="primary" disabled>Disabled</tm-button>
+    </div>
+    
+    <div class="code">Usage:
+&lt;tm-button variant="primary" size="medium"&gt;Click me&lt;/tm-button&gt;
+&lt;tm-button variant="secondary" size="small"&gt;Secondary&lt;/tm-button&gt;
+&lt;tm-button variant="outline" disabled&gt;Disabled&lt;/tm-button&gt;</div>
+  </div>
+
+  <div class="section">
+    <h2>TmCard Examples</h2>
+    
+    <div class="components-grid">
+      <tm-card variant="default" padding="medium">
+        <div slot="header">Default Card</div>
+        <p>This is a default card with medium padding. It has a subtle shadow and clean styling.</p>
+        <div slot="footer">Footer content</div>
+      </tm-card>
+      
+      <tm-card variant="elevated" padding="large">
+        <div slot="header">Elevated Card</div>
+        <p>This card has enhanced shadows and hover effects. Perfect for highlighting important content.</p>
+      </tm-card>
+      
+      <tm-card variant="bordered" padding="small">
+        <div slot="header">Bordered Card</div>
+        <p>This card uses borders instead of shadows for a different visual style.</p>
+      </tm-card>
+      
+      <tm-card padding="medium">
+        <h3>Card without header/footer</h3>
+        <p>This card only has main content. The header and footer are automatically hidden when empty.</p>
+      </tm-card>
+    </div>
+    
+    <div class="code">Usage:
+&lt;tm-card variant="elevated" padding="large"&gt;
+  &lt;div slot="header"&gt;Card Title&lt;/div&gt;
+  &lt;p&gt;Main content goes here.&lt;/p&gt;
+  &lt;div slot="footer"&gt;Footer content&lt;/div&gt;
+&lt;/tm-card&gt;</div>
+  </div>
+
+  <div class="section">
+    <h2>Interactive Examples</h2>
+    <p>Click the buttons below to see custom events in action:</p>
+    
+    <div class="button-examples">
+      <tm-button id="event-demo" variant="primary">Click me for alert</tm-button>
+      <tm-button id="counter-btn" variant="secondary">Counter: <span id="counter">0</span></tm-button>
+    </div>
+    
+    <p id="last-event">No events yet...</p>
+  </div>
+
+  <!-- Import the web components -->
+  <script type="module" src="../libs/frontend/web-components/dist/index.js"></script>
+  
+  <!-- Demo JavaScript -->
+  <script>
+    // Event handling example
+    document.getElementById('event-demo').addEventListener('tm-click', (event) => {
+      alert('Button clicked! Custom event fired.');
+      document.getElementById('last-event').textContent = 
+        `Last event: tm-click at ${new Date().toLocaleTimeString()}`;
+    });
+    
+    // Counter example
+    let count = 0;
+    document.getElementById('counter-btn').addEventListener('tm-click', (event) => {
+      count++;
+      document.getElementById('counter').textContent = count;
+      document.getElementById('last-event').textContent = 
+        `Counter clicked ${count} times at ${new Date().toLocaleTimeString()}`;
+    });
+    
+    console.log('🐕 Tail Mates Web Components loaded successfully!');
+  </script>
+</body>
+</html>
