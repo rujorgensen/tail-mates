@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "web-components:build": "bun build ./libs/frontend/web-components/src/index.ts --outdir ./dist/libs/frontend/web-components --format esm",
+    "dev-frontend": "astro dev --config apps/frontend/astro.config.mjs",
     "dev-backend": "bun run --watch apps/backend/src/index.ts",
     "build": "astro build",
     "preview": "astro preview"
