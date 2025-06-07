@@ -50,3 +50,11 @@ pnpm-debug.log*
 **/*.tgz
 **/*.log
 **/*.bun
+
+# Added by NX
+.nx/cache
+.nx/workspace-data
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
