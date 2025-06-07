@@ -23,11 +23,11 @@ test('Build outputs exist', () => {
   const distPath = join(process.cwd(), 'dist');
   const indexJs = join(distPath, 'index.js');
   const indexDts = join(distPath, 'index.d.ts');
-  
+
   if (!existsSync(indexJs)) {
     throw new Error('index.js not found in dist/');
   }
-  
+
   if (!existsSync(indexDts)) {
     throw new Error('index.d.ts not found in dist/');
   }
@@ -37,12 +37,12 @@ test('Build outputs exist', () => {
 test('Exports are correctly defined', () => {
   const indexJs = readFileSync(join(process.cwd(), 'dist', 'index.js'), 'utf-8');
   const indexDts = readFileSync(join(process.cwd(), 'dist', 'index.d.ts'), 'utf-8');
-  
+
   // Check that components are exported
   if (!indexJs.includes('TmButton') || !indexJs.includes('TmCard')) {
     throw new Error('Components not exported in JavaScript');
   }
-  
+
   if (!indexDts.includes('TmButton') || !indexDts.includes('TmCard')) {
     throw new Error('Components not exported in TypeScript definitions');
   }
@@ -51,11 +51,11 @@ test('Exports are correctly defined', () => {
 // Test package.json is valid
 test('Package.json is valid', () => {
   const pkg = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
-  
+
   if (!pkg.name || !pkg.version) {
     throw new Error('Package.json missing required fields');
   }
-  
+
   if (!pkg.main || !pkg.types) {
     throw new Error('Package.json missing main or types fields');
   }
