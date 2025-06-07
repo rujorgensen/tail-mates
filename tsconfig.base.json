@@ -18,7 +18,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tail-mates/frontend/web-components": [
+      "@tail-mates/web-components": [
         "libs/frontend/web-components-2/src/index.ts"
       ]
     }
