@@ -48,7 +48,7 @@ The project includes a custom web components library (`@tail-mates/web-component
 - **TmButton**: Customizable button component with multiple variants and sizes
 - **TmCard**: Flexible card container with optional header and footer
 
-The components are built using native Web Components API with TypeScript for excellent developer experience and framework independence.
+The components are built using native Web Components API with TypeScript for excellent developer experience and framework independence. Interactive documentation and development is available through Storybook.
 
 **Usage:**
 ```typescript
@@ -62,7 +62,7 @@ import '@tail-mates/web-components';
 </tm-card>
 ```
 
-See [Web Components Documentation](./docs/web-components.md) for detailed usage instructions.
+See [Web Components Documentation](./docs/web-components.md) for detailed usage instructions, or run Storybook for interactive component exploration.
 
 ## Development
 
@@ -81,3 +81,4 @@ All commands are run from the root of the project, from a terminal:
 | `bun dev-frontend`             | Starts local frontend dev server at `localhost:4321`      |
 | `bun dev-backend`           | Starts local backend dev server at `localhost:3000` |
 | `bun web-components:build`           | Build the web components library |
+| `cd libs/frontend/web-components && bun run storybook` | Start Storybook for component development at `localhost:6006` |

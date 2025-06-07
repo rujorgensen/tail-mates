@@ -56,6 +56,12 @@ bun run build
 
 # Development mode (watch for changes)
 bun run dev
+
+# Start Storybook for component development and documentation
+bun run storybook
+
+# Build Storybook for deployment
+bun run build-storybook
 ```
 
 ## Usage in Projects
@@ -75,6 +81,27 @@ The components are built using:
 - Native Web Components API (Custom Elements, Shadow DOM)
 - CSS-in-JS for styling
 - Modern ES modules
+- Storybook for component documentation and development
+
+### Component Development with Storybook
+
+This library includes Storybook for interactive component development and documentation. Storybook provides:
+
+- **Interactive component playground** - Test components with different props and states
+- **Comprehensive documentation** - Auto-generated docs from component stories
+- **Visual testing** - See all component variants in one place
+- **Development workflow** - Hot reloading during development
+
+To start Storybook:
+```bash
+bun run storybook
+```
+
+This will start Storybook at `http://localhost:6006` where you can:
+- Browse all components and their variants
+- Interact with component controls to change props
+- View auto-generated documentation
+- Test component behavior in isolation
 
 ### File Structure
 

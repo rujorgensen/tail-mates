@@ -177,6 +177,27 @@ bun run dev
 
 This will start TypeScript in watch mode, automatically rebuilding when files change.
 
+### Component Development with Storybook
+
+For component development, testing, and documentation, this library includes Storybook:
+
+```bash
+# Start Storybook development server
+bun run storybook
+
+# Build Storybook for deployment
+bun run build-storybook
+```
+
+Storybook provides:
+
+- **Interactive component playground** - Test all component variants and properties
+- **Live documentation** - Auto-generated documentation from component stories  
+- **Visual testing** - See all components and their states in one place
+- **Development workflow** - Hot reloading and instant feedback
+
+Access Storybook at `http://localhost:6006` to browse components, interact with controls, and view comprehensive documentation.
+
 ## Best Practices
 
 ### Styling
