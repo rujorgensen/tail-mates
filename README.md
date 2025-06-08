@@ -82,3 +82,4 @@ All commands are run from the root of the project, from a terminal:
 | `bun dev-backend`           | Starts local backend dev server at `localhost:3000` |
 | `bun web-components:build`           | Build the web components library |
 | `cd libs/frontend/web-components && bun run storybook` | Start Storybook for component development at `localhost:6006` |
+| `cd libs/frontend/web-components && bun run storybook-build` | Build static Storybook files |
