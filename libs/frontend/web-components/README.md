@@ -61,7 +61,7 @@ bun run dev
 bun run storybook
 
 # Build Storybook for deployment
-bun run build-storybook
+bun run storybook-build
 ```
 
 ## Usage in Projects
