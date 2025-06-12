@@ -11,11 +11,32 @@
     "preview": "astro preview",
     "storybook-build": "storybook build --config-dir libs/frontend/web-components/.storybook --output-dir ./dist/libs/frontend/storybook-web-components",
     "storybook:docker:build": "docker build -f ./.deploy/web-components.storybook.Dockerfile -t web-components-storybook .",
-    "storybook:docker:run": "docker run -p 3021:3021 web-components-storybook"
+    "storybook:docker:run": "docker run -p 3021:3021 web-components-storybook",
+    "//-01a": "// ****************************************************************************",
+    "//-01b": "// *** Docker                                                                ",
+    "//-01c": "// ****************************************************************************",
+    "docker:tail-mates:dev:up": "docker compose -p tail-mates -f .deploy/docker-compose.dev.yml up -d --build",
+    "docker:tail-mates:dev:down": "docker compose -p tail-mates -f .deploy/docker-compose.dev.yml down",
+    "//-02a": "// ****************************************************************************",
+    "//-02b": "// *** Prisma                                                                  ",
+    "//-02c": "// ****************************************************************************",
+    "prisma:generate:tail-mates": "bunx prisma generate --schema=./prisma/schema.prisma",
+    "prisma:migrate:dev:tail-mates": "bunx prisma migrate dev --schema=./prisma/schema.prisma --name=init",
+    "prisma:deploy": "bunx prisma migrate deploy --schema=./prisma/schema.prisma",
+    "//-03a": "// ****************************************************************************",
+    "//-03b": "// *** Better Auth                                                             ",
+    "//-03c": "// ****************************************************************************",
+    "auth:generate": "npx @better-auth/cli@latest generate --config=./apps/backend/src/auth.ts",
+    "//-04a": "// ****************************************************************************",
+    "//-04b": "// *** Misc                                                                    ",
+    "//-04c": "// ****************************************************************************",
+    "postinstall": "bun prisma:generate:tail-mates || true"
   },
   "dependencies": {
+    "@prisma/client": "^6.9.0",
     "@types/bun": "^1.2.15",
     "astro": "^5.9.1",
+    "better-auth": "1.2.9",
     "elysia": "latest"
   },
   "devDependencies": {
@@ -30,6 +51,7 @@
     "@vitest/coverage-v8": "^3.2.2",
     "lit": "^3.3.0",
     "playwright": "^1.52.0",
+    "prisma": "^6.9.0",
     "storybook": "^9.0.6",
     "typescript": "^5.0.0",
     "vitest": "^3.2.2"
