@@ -17,6 +17,12 @@ datasource db {
   url      = env("TAIL_MATES_DATABASE_URL")
 }
 
+/**
+ * ***************************************************************************
+ * ** Auth
+ * ***************************************************************************
+ */
+
 model User {
   id            String    @id
   name          String
@@ -27,6 +33,8 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+
+  dogs Dog[]
 
   @@unique([email])
   @@map("user")
@@ -75,4 +83,87 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+/**
+ * ***************************************************************************
+ * ** Dogs
+ * ***************************************************************************
+ */
+model Dog {
+  id      String @id @default(nanoid())
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String
+
+  imageUrl String
+
+  name              String
+  birthDate         DateTime
+  size              ESize
+  favouriteActivity String?
+  gender            EGender
+  neutered          Boolean  @default(false)
+
+  joinedEvents JoinedEvent[]
+}
+
+enum EGender {
+  MALE
+  FEMALE
+}
+
+enum ESize {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+/**
+ * ***************************************************************************
+ * ** Events
+ * ***************************************************************************
+ */
+model Event {
+  id      String @id @default(nanoid())
+  comment String
+
+  startAt  DateTime
+  duration EDuration
+
+  joined JoinedEvent[]
+
+  locationId String
+  location   Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+}
+
+// Duration in minutes
+enum EDuration {
+  FIVE_TO_FIFTEEN_MINUTES
+  FIFTEEN_TO_THIRTY_MINUTES
+  THIRTY_TO_SIXTY_MINUTES
+  SIXTY_MINUTES_OR_LONGER
+}
+
+model JoinedEvent {
+  id        String   @id @default(nanoid())
+  dogId     String
+  dog       Dog      @relation(fields: [dogId], references: [id])
+  createdAt DateTime @default(now())
+  event     Event    @relation(fields: [eventId], references: [id])
+  eventId   String
+}
+
+/**
+ * ***************************************************************************
+ * ** Locations
+ * ***************************************************************************
+ */
+
+// Use floats for lat/long until Geo/Spatial support is added to Prisma.
+// Track it here: https://github.com/prisma/prisma/issues/1798
+model Location {
+  id        String  @id @default(nanoid())
+  latitude  Float
+  longitude Float
+  events    Event[]
 }
