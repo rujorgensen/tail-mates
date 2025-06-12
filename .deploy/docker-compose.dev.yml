@@ -1,0 +1,17 @@
+services:
+
+  tail-mates-postgres-dev:
+    image: postgres:17.5-alpine
+    restart: always
+    container_name: tail-mates-postgres-dev
+    environment:
+      POSTGRES_USER: dev-user
+      POSTGRES_PASSWORD: dev-password
+      POSTGRES_DB: dev-db
+    ports:
+      - "5440:5432"
+    volumes:
+      - tail-mates-pgdata-dev:/var/lib/postgresql/data
+
+volumes:
+  tail-mates-pgdata-dev:
