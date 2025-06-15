@@ -51,10 +51,19 @@ pnpm-debug.log*
 **/*.log
 **/*.bun
 
+<<<<<<< HEAD
 # Added by NX
+=======
+
+>>>>>>> 6dc6c6d50f81f297e137066d854bee3fff29eaac
 .nx/cache
 .nx/workspace-data
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+<<<<<<< HEAD
+=======
+
+storybook-static
+>>>>>>> 6dc6c6d50f81f297e137066d854bee3fff29eaac
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
