@@ -33,7 +33,7 @@ const betterAuth = new Elysia({ name: 'better-auth' })
 const app = new Elysia()
   .use(betterAuth)
   .get("/", () => "Hello Elysia")
-  .listen(3000)
+  .listen(3100)
   ;
 
 console.log(
