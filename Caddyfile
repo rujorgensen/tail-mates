@@ -1,4 +1,4 @@
-# Portal PROD Caddyfile
+# tail-mates PROD Caddyfile
 {
 	auto_https off
 }

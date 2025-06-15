@@ -43,4 +43,4 @@ RUN addgroup -S app_group && adduser -S bun_user -G app_group
 USER bun_user
 EXPOSE 3100/tcp
 
-ENTRYPOINT [ "bun", "deploy:portal"]
+ENTRYPOINT [ "bun", "deploy:tail-mates"]

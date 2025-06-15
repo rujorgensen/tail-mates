@@ -41,7 +41,7 @@ ENV PORT=3101
 # Can be used for debugging: RUN apk add --no-cache curl
 
 # "COPY --from=install ./src/node_modules node_modules"
-# Fixes error: Cannot find module 'kleur/colors' from '/src/dist/apps/frontend/portal/server/manifest_DmhAtobi.mjs'
+# Fixes error: Cannot find module 'kleur/colors' from '/src/dist/apps/frontend/server/manifest_DmhAtobi.mjs'
 # Bun v1.2.16 (Linux x64 baseline)
 COPY --from=install ./src/node_modules node_modules
 
@@ -53,4 +53,4 @@ RUN addgroup -S app_group && adduser -S bun_user -G app_group
 USER bun_user
 EXPOSE 3101
 
-ENTRYPOINT [ "bun", "run", "./dist/apps/frontend/portal/server/entry.mjs"]
+ENTRYPOINT [ "bun", "run", "./dist/apps/frontend/server/entry.mjs"]

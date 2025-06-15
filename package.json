@@ -34,7 +34,7 @@
     "//-05a": "// ****************************************************************************",
     "//-05b": "// *** Deploy                                                                  ",
     "//-05c": "// ****************************************************************************",
-    "deploy:portal": "bun prisma:deploy && bun run ./dist/apps/backend/main.js"
+    "deploy:tail-mates": "bun prisma:deploy && bun run ./dist/apps/backend/main.js"
   },
   "dependencies": {
     "@astrojs/node": "^9.2.2",
