@@ -12,6 +12,11 @@ generator client {
   output   = "../node_modules/@prisma-types/tail-mates"
 }
 
+generator dbml {
+  provider   = "prisma-dbml-generator"
+  outputName = "tail-mates.dbml"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("TAIL_MATES_DATABASE_URL")
