@@ -68,7 +68,7 @@ See [Web Components Documentation](./docs/web-components.md) for detailed usage 
 
 ### 🐣 Getting Started
 
-Start the server and open http://localhost:3000/ with your browser to see the result.
+Start the server and open http://localhost:3100/ with your browser to see the result.
 
 
 ### 🧞 Commands
@@ -78,8 +78,8 @@ All commands are run from the root of the project, from a terminal:
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `bun install`             | Installs dependencies                            |
-| `bun dev-frontend`             | Starts local frontend dev server at `localhost:4321`      |
-| `bun dev-backend`           | Starts local backend dev server at `localhost:3000` |
+| `nx serve frontend-tail-mates`             | Starts local frontend dev server at `localhost:3101`      |
+| `nx serve backend-tail-mates`           | Starts local backend dev server at `localhost:3100` |
 | `bun web-components:build`           | Build the web components library |
 | `cd libs/frontend/web-components && bun run storybook` | Start Storybook for component development at `localhost:6006` |
 | `cd libs/frontend/web-components && bun run storybook-build` | Build static Storybook files |
