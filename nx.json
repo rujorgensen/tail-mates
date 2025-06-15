@@ -12,8 +12,6 @@
         "{projectRoot}/dist"
       ],
       "cache": true
-<<<<<<< HEAD
-=======
     },
     "storybook-build": {
       "outputs": [
@@ -26,13 +24,10 @@
         "{projectRoot}/prisma"
       ],
       "cache": true
->>>>>>> 6dc6c6d50f81f297e137066d854bee3fff29eaac
     }
   },
   "plugins": [
     {
-<<<<<<< HEAD
-=======
       "plugin": "@nx/storybook/plugin",
       "options": {
         "serveStorybookTargetName": "storybook",
@@ -42,7 +37,6 @@
       }
     },
     {
->>>>>>> 6dc6c6d50f81f297e137066d854bee3fff29eaac
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build",
@@ -56,10 +50,6 @@
         "watchDepsTargetName": "watch-deps"
       }
     }
-<<<<<<< HEAD
-  ]
-=======
   ],
   "nxCloudId": "684edb35c2aab92066a3ea5b"
->>>>>>> 6dc6c6d50f81f297e137066d854bee3fff29eaac
 }
