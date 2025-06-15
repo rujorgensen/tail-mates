@@ -1,0 +1,59 @@
+services:
+  tail-mates-ui:
+    image: tail-mates-ui:latest
+    container_name: tail-mates-ui-prod
+    build:
+      context: .
+      dockerfile: ./apps/frontend/Dockerfile
+      target: deploy
+    networks:
+      - tail-mates-public-network
+
+  tail-mates-api:
+    image: tail-mates-api:latest
+    container_name: tail-mates-api-prod
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+      target: deploy
+    networks:
+      - tail-mates-public-network
+
+   # ******************************************************************************
+   # *** Proxy
+   # ******************************************************************************
+  caddy:
+    image: caddy:2.10.0
+    container_name: tail-mates-caddy-proxy-prod
+    restart: unless-stopped
+    ports:
+      - "9100:9100"
+  #    - "80:80"
+  #    - "443:443"
+  #    - "443:443/udp"
+
+    depends_on:
+      tail-mates-api:
+        condition: service_started
+      tail-mates-ui:
+        condition: service_started
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - tail-mates-public-network
+
+# *******************************************************************************
+# *** Networks
+# *******************************************************************************
+networks:
+  tail-mates-public-network:
+    driver: bridge
+
+# *******************************************************************************
+# *** Volumes
+# *******************************************************************************
+volumes:
+  caddy_data:
+  caddy_config:
