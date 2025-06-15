@@ -51,6 +51,7 @@ pnpm-debug.log*
 **/*.log
 **/*.bun
 
+# Added by NX
 
 .nx/cache
 .nx/workspace-data
