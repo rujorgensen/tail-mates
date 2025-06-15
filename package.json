@@ -1,5 +1,5 @@
 {
-  "name": "retrograde-rotation",
+  "name": "tail-mates",
   "type": "module",
   "version": "0.0.2",
   "scripts": {
@@ -33,6 +33,7 @@
     "postinstall": "bun prisma:generate:tail-mates || true"
   },
   "dependencies": {
+    "@astrojs/node": "^9.2.2",
     "@prisma/client": "^6.9.0",
     "@types/bun": "^1.2.16",
     "astro": "^5.9.3",
@@ -64,6 +65,5 @@
     "vite": "^6.0.0",
     "vitest": "^3.2.3"
   },
-  "packageManager": "bun@1.2.16",
-  "nx": {}
+  "packageManager": "bun@1.2.16"
 }

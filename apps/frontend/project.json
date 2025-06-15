@@ -1,0 +1,26 @@
+{
+  "name": "frontend-tail-mates",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/frontend/web-components-2/src",
+  "projectType": "library",
+  "tags": [
+    "type:ui",
+    "scope:frontend"
+  ],
+  "// targets": "to see all targets run: nx show project frontend-tail-mates --web",
+  "targets": {
+    "build": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "astro build"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "astro dev --port=3101",
+        "proxyConfig": "apps/frontend/proxy.conf.json"
+      }
+    }
+  }
+}
