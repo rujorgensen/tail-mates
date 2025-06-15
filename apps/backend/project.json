@@ -1,0 +1,42 @@
+{
+    "name": "backend-tail-mates",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/backend/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "bun run {projectRoot}/build.js",
+                "args": [
+                    "--projectRoot={projectRoot}"
+                ]
+            }
+        },
+        "serve": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "bun run --watch {projectRoot}/src/main.ts --tsconfig-override=tsconfig.app.json"
+            },
+            "dependsOn": [
+                "docker-dev"
+            ],
+            "continuous": true
+        },
+        "bun-test": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "bun test {projectRoot}/"
+            }
+        },
+        "docker-dev": {
+            "command": "docker compose -p tail-mates-dev -f '.deploy/docker-compose.dev.yml' up -d --build"
+        },
+        "docker-build": {
+            "command": "docker build -f apps/backend/Dockerfile . -t tail-mates"
+        }
+    },
+    "tags": [
+        "scope:tail-mates"
+    ]
+}
