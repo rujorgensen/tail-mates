@@ -34,27 +34,36 @@
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
-    "@types/bun": "^1.2.15",
-    "astro": "^5.9.1",
+    "@types/bun": "^1.2.16",
+    "astro": "^5.9.3",
     "better-auth": "1.2.9",
-    "elysia": "latest"
+    "elysia": "latest",
+    "prisma-dbml-generator": "^0.12.0"
   },
   "devDependencies": {
-    "bun-types": "latest",
     "@chromatic-com/storybook": "^4",
-    "@storybook/addon-a11y": "^9.0.6",
-    "@storybook/addon-docs": "^9.0.6",
-    "@storybook/addon-vitest": "^9.0.6",
-    "@storybook/html-vite": "^9.0.6",
-    "@storybook/web-components-vite": "^9.0.6",
-    "@vitest/browser": "^3.2.2",
-    "@vitest/coverage-v8": "^3.2.2",
+    "@nx/storybook": "21.2.0",
+    "@nx/vite": "21.2.0",
+    "@nx/web": "21.2.0",
+    "@storybook/addon-a11y": "^9.0.10",
+    "@storybook/addon-docs": "^9.0.10",
+    "@storybook/addon-vitest": "^9.0.10",
+    "@storybook/html-vite": "^9.0.10",
+    "@storybook/web-components-vite": "^9.0.10",
+    "@vitest/browser": "^3.2.3",
+    "@vitest/coverage-v8": "^3.2.3",
+    "@vitest/ui": "^3.0.0",
+    "bun-types": "latest",
+    "jiti": "2.4.2",
     "lit": "^3.3.0",
-    "playwright": "^1.52.0",
+    "nx": "21.2.0",
+    "playwright": "^1.53.0",
     "prisma": "^6.9.0",
-    "storybook": "^9.0.6",
-    "typescript": "^5.0.0",
-    "vitest": "^3.2.2"
+    "storybook": "^9.0.10",
+    "typescript": "^5.8.3",
+    "vite": "^6.0.0",
+    "vitest": "^3.2.3"
   },
-  "packageManager": "bun@1.2.15"
+  "packageManager": "bun@1.2.16",
+  "nx": {}
 }

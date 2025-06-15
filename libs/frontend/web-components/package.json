@@ -17,7 +17,7 @@
   "scripts": {
     "test": "bun run build && bun test.ts",
     "build": "bun build ./src/index.ts --outdir ../../../dist/libs/frontend/web-components --format esm",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "nx storybook -p 6006"
   },
   "keywords": [
     "web-components",
