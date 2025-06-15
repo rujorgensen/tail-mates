@@ -1,7 +1,7 @@
 {
   "name": "retrograde-rotation",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "upd": "ncu -i --format group",
     "web-components:build": "bun build ./libs/frontend/web-components/src/index.ts --outdir ./dist/libs/frontend/web-components --format esm",
