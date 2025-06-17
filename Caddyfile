@@ -4,8 +4,8 @@
 }
 
 http://:9100 {
-	reverse_proxy /api* tail-mates-api-api:3100
-	reverse_proxy * tail-mates-api-ui:3101
+	reverse_proxy /api* tail-mates-api:3100
+	reverse_proxy * tail-mates-ui:3101
 
 	handle /cddy {
 		respond "Caddytime!"
