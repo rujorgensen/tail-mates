@@ -22,6 +22,9 @@
     "paths": {
       "@tail-mates/web-components": [
         "libs/frontend/web-components-2/src/index.ts"
+      ],
+      "@prisma-types/flux": [
+        "node_modules/@prisma-types/tail-mates"
       ]
     }
   },
