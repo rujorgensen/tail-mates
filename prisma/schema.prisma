@@ -8,8 +8,9 @@
  */
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../node_modules/@prisma-types/tail-mates"
+  provider        = "prisma-client-js"
+  previewFeatures = ["queryCompiler", "driverAdapters"]
+  output          = "../node_modules/@prisma-types/tail-mates"
 }
 
 generator dbml {

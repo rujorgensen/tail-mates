@@ -30,7 +30,6 @@ RUN bun run apps/backend/build.js --projectRoot=apps/backend
 # ******************************************************************************
 # *** DEPLOY STAGE
 # ******************************************************************************
-# Copy production dependencies and source code into final image
 FROM base AS deploy
 
 COPY package.json ./
