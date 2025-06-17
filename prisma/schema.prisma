@@ -9,7 +9,6 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["queryCompiler", "driverAdapters"]
   output          = "../node_modules/@prisma-types/tail-mates"
 }
 

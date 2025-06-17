@@ -35,7 +35,15 @@ FROM base AS deploy
 COPY package.json ./
 COPY prisma ./prisma/
 COPY --from=build ./src/dist ./dist
+
+# Include Prisma generated types
 COPY --from=install ./src/node_modules/@prisma-types  ./node_modules/@prisma-types
+
+# Include binaries
+COPY --from=install ./src/node_modules/.bin  ./node_modules/.bin
+
+# Include Prisma engines
+COPY --from=install ./src/node_modules/@prisma  ./node_modules/@prisma
 
 # Run the app as bun_user
 RUN addgroup -S app_group && adduser -S bun_user -G app_group
