@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import proxy from './proxy.conf.json' assert { type: 'json' };
 import node from '@astrojs/node';
 
 // https://astro.build/config
@@ -14,7 +13,18 @@ export default defineConfig({
       // Add Vite configuration with proxy settings
       vite: {
             server: {
-                  proxy,
-            }
+                  proxy: {
+                        '/auth': {
+                              target: 'http://localhost:3100',
+                              changeOrigin: true,
+                              secure: false,
+                        },
+                        '/api': {
+                              target: 'http://localhost:3100',
+                              changeOrigin: true,
+                              secure: false
+                        }
+                  },
+            },
       }
 });
