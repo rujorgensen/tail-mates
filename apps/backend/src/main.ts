@@ -1,5 +1,5 @@
 import { type Context, Elysia } from 'elysia';
-import { auth } from './auth';
+import { auth } from '@backend/auth';
 
 // User middleware (compute user and session and pass to routes)
 const betterAuth = new Elysia({ name: 'better-auth' })
