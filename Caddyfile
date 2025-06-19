@@ -3,6 +3,11 @@
 	email rujorgensen@gmail.com
 }
 
+# Force HTTP to HTTPS for main domains
+http://tail-mates.dk {
+	redir https://{host}{uri} permanent
+}
+
 tail-mates.dk {
 	encode gzip
 	reverse_proxy /api* tail-mates-api:3100
