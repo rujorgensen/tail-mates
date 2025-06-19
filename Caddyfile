@@ -1,25 +1,16 @@
 # tail-mates PROD Caddyfile
 {
-	email rujorgensen@gmail.com
+	auto_https off
 }
 
 # Force HTTP to HTTPS for main domains
-http://tail-mates.dk {
-	redir https://{host}{uri} permanent
-}
+# http://tail-mates.dk {
+# 	redir https://{host}{uri} permanent
+# }
 
-tail-mates.dk {
-	encode gzip
-	reverse_proxy /api* tail-mates-api:3100
-	reverse_proxy * tail-mates-ui:3101
-
-	handle /cddy {
-		respond "Caddytime!"
-	}
-}
-
-# Optional local dev / health-check port (no TLS)
 http://:9100 {
+	encode gzip
+
 	reverse_proxy /api* tail-mates-api:3100
 	reverse_proxy * tail-mates-ui:3101
 
