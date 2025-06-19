@@ -1,8 +1,19 @@
 # tail-mates PROD Caddyfile
 {
-	auto_https off
+	email rujorgensen@gmail.com
 }
 
+tail-mates.dk {
+	encode gzip
+	reverse_proxy /api* tail-mates-api:3100
+	reverse_proxy * tail-mates-ui:3101
+
+	handle /cddy {
+		respond "Caddytime!"
+	}
+}
+
+# Optional local dev / health-check port (no TLS)
 http://:9100 {
 	reverse_proxy /api* tail-mates-api:3100
 	reverse_proxy * tail-mates-ui:3101
