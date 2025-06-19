@@ -25,7 +25,10 @@
       ],
       "@prisma-types/flux": [
         "node_modules/@prisma-types/tail-mates"
-      ]
+      ],
+      "@backend/auth": [
+        "libs/backend/auth/src/index.ts"
+      ],
     }
   },
   "exclude": [
