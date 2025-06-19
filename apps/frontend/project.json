@@ -23,7 +23,10 @@
       "options": {
         "script": "astro dev --port=3101",
         "proxyConfig": "apps/frontend/proxy.conf.json"
-      }
+      },
+      "dependsOn": [
+        "backend-tail-mates:serve"
+      ]
     }
   }
 }
