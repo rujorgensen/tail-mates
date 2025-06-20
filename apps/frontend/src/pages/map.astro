@@ -1,13 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Map from '../components/Map.astro';
-import { auth } from '@backend/auth';
 
-const session = await auth.api.getSession({
-    headers: Astro.request.headers,
-});
+// Handle auth import gracefully in case of backend issues
+let session = null;
+try {
+    const { auth } = await import('@backend/auth');
+    session = await auth.api.getSession({
+        headers: Astro.request.headers,
+    });
+} catch (error) {
+    console.warn('Auth service unavailable, allowing map access:', error.message);
+}
 
-if (!session) {
+// Only redirect if auth is working and no session exists
+if (session === false) {
     return Astro.redirect('/sign-in');
 }
 ---

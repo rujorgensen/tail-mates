@@ -15,22 +15,54 @@
         crossorigin=""></script>
 
 <script>
+  // Wait for both DOM and Leaflet to be ready
+  function initializeMap() {
+    // Check if Leaflet is loaded and DOM is ready
+    if (typeof L !== 'undefined' && document.getElementById('map')) {
+      try {
+        // Create map centered on Copenhagen, Denmark (default location for Tail Mates)
+        const map = L.map('map', {
+          zoomControl: true,
+          attributionControl: true
+        }).setView([55.6761, 12.5683], 13);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 19,
+          subdomains: ['a', 'b', 'c']
+        }).addTo(map);
+        
+        // Add a marker for the default location
+        const marker = L.marker([55.6761, 12.5683])
+          .addTo(map)
+          .bindPopup('<strong>Welcome to Tail Mates!</strong><br/>Find your perfect tail mate here.');
+        
+        // Optional: Open popup after a short delay
+        setTimeout(() => {
+          marker.openPopup();
+        }, 1000);
+        
+        // Handle resize events
+        window.addEventListener('resize', () => {
+          map.invalidateSize();
+        });
+        
+        console.log('Map initialized successfully');
+      } catch (error) {
+        console.error('Error initializing map:', error);
+      }
+    } else {
+      // Retry after a short delay if Leaflet isn't loaded yet
+      setTimeout(initializeMap, 100);
+    }
+  }
+  
   // Initialize the map when the script loads
-  if (typeof L !== 'undefined') {
-    // Create map centered on Copenhagen, Denmark (default location for Tail Mates)
-    const map = L.map('map').setView([55.6761, 12.5683], 13);
-    
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19,
-    }).addTo(map);
-    
-    // Optional: Add a marker for the default location
-    L.marker([55.6761, 12.5683])
-      .addTo(map)
-      .bindPopup('Welcome to Tail Mates!')
-      .openPopup();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeMap);
+  } else {
+    initializeMap();
   }
 </script>
 
@@ -41,5 +73,11 @@
     min-height: 100vh;
     position: relative;
     z-index: 1;
+    background-color: #f0f0f0; /* fallback background */
+  }
+  
+  /* Override any potential parent margins/padding */
+  .map-container * {
+    box-sizing: border-box;
   }
 </style>
