@@ -1,22 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Map from '../components/Map.astro';
-
-// Handle auth import gracefully in case of backend issues
-let session = null;
-try {
-    const { auth } = await import('@backend/auth');
-    session = await auth.api.getSession({
-        headers: Astro.request.headers,
-    });
-} catch (error) {
-    console.warn('Auth service unavailable, allowing map access:', error.message);
-}
-
-// Only redirect if auth is working and no session exists
-if (session === false) {
-    return Astro.redirect('/sign-in');
-}
 ---
 
 <Layout title="Map - Tail Mates">
