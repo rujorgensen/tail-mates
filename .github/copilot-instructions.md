@@ -4,7 +4,7 @@ This is a TypeScript based repository using Bun and Elysia.
 - **Language**: TypeScript
 - **Runtime**: Bun
 - **Backend Frameworks**: Elysia / Bun
-- **Frontend Frameworks**: Astro
+- **Frontend Frameworks**: Astro and Svelte
 - **Package Manager and Dependency Management**: Bun / Bun.lockb
 - **Testing**: Bun
 - **Documentation**: Markdown files in `docs/`
@@ -29,3 +29,6 @@ This is a TypeScript based repository using Bun and Elysia.
 3. Write unit tests for new functionality.
 4. Always update the version in package.json when creating PRs.
 5. Document public APIs and complex logic. Suggest changes to the `docs/` folder when appropriate.
+
+## Pull Requests
+- Bump version in `package.json` when creating PRs and follow the semantic versioning convention.
