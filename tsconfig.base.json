@@ -23,7 +23,7 @@
       "@tail-mates/web-components": [
         "libs/frontend/web-components-2/src/index.ts"
       ],
-      "@prisma-types/flux": [
+      "@prisma-types/tail-mates": [
         "node_modules/@prisma-types/tail-mates"
       ],
       "@backend/auth": [

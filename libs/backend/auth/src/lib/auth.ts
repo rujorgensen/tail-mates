@@ -1,6 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { PrismaClient } from "@prisma-types/flux";
+import { PrismaClient } from "@prisma-types/tail-mates";
 
 const prisma = new PrismaClient();
 
