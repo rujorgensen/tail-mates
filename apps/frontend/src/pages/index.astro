@@ -13,10 +13,5 @@ if (!session) {
 ---
 
 <Layout>
-    <div class="welcome-message">
-        <h1>Welcome, {session.user.name}!</h1>
-        <p>You are logged in as {session.user.email}.</p>
-    </div>
-
-    <Welcome />
+    <Welcome {session} />
 </Layout>
