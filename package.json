@@ -38,12 +38,14 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.2.2",
+    "@astrojs/svelte": "^7.1.0",
     "@prisma/client": "^6.10.1",
     "@types/bun": "^1.2.16",
     "astro": "^5.10.0",
     "better-auth": "1.2.9",
     "elysia": "latest",
-    "prisma-dbml-generator": "^0.12.0"
+    "prisma-dbml-generator": "^0.12.0",
+    "svelte": "^5.34.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4",
