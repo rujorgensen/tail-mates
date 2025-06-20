@@ -27,4 +27,5 @@ This is a TypeScript based repository using Bun and Elysia.
 1. Maintain existing code structure and organization
 2. Use dependency injection patterns where appropriate
 3. Write unit tests for new functionality.
+4. Always update the version in package.json when creating PRs.
 5. Document public APIs and complex logic. Suggest changes to the `docs/` folder when appropriate.

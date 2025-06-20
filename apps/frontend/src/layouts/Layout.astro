@@ -1,9 +1,12 @@
 ---
+import packageJson from '../../../../package.json';
+
 export interface Props {
 	title?: string;
 }
 
 const { title = "Tail Mates" } = Astro.props;
+const version = packageJson.version;
 ---
 
 <!doctype html>
@@ -17,6 +20,9 @@ const { title = "Tail Mates" } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<script define:vars={{ version }}>
+			console.log(`Tail Mates version: ${version}`);
+		</script>
 	</body>
 </html>
 
