@@ -6,6 +6,7 @@ import node from '@astrojs/node';
 export default defineConfig({
       output: 'server',
       outDir: '../../dist/apps/frontend',
+      srcDir: './src',
       adapter: node({
             mode: 'standalone',
       }),

@@ -1,0 +1,45 @@
+---
+// Map component for OpenStreetMap integration using Leaflet
+---
+
+<!-- Include Leaflet CSS from CDN for reliability -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+      crossorigin="" />
+
+<div id="map" class="map-container"></div>
+
+<!-- Include Leaflet JS from CDN -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script>
+  // Initialize the map when the script loads
+  if (typeof L !== 'undefined') {
+    // Create map centered on Copenhagen, Denmark (default location for Tail Mates)
+    const map = L.map('map').setView([55.6761, 12.5683], 13);
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+    
+    // Optional: Add a marker for the default location
+    L.marker([55.6761, 12.5683])
+      .addTo(map)
+      .bindPopup('Welcome to Tail Mates!')
+      .openPopup();
+  }
+</script>
+
+<style>
+  .map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+</style>
