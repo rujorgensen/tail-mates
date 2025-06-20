@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Map from '../components/Map.astro';
+---
+
+<Layout title="Map - Tail Mates">
+	<div class="map-page">
+		<Map />
+	</div>
+</Layout>
+
+<style>
+	/* Ensure full-page layout for the map */
+	.map-page {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 1;
+	}
+</style>

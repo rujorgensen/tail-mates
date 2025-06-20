@@ -1,0 +1,83 @@
+---
+// Map component for OpenStreetMap integration using Leaflet
+---
+
+<!-- Include Leaflet CSS from CDN for reliability -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+      crossorigin="" />
+
+<div id="map" class="map-container"></div>
+
+<!-- Include Leaflet JS from CDN -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script>
+  // Wait for both DOM and Leaflet to be ready
+  function initializeMap() {
+    // Check if Leaflet is loaded and DOM is ready
+    if (typeof L !== 'undefined' && document.getElementById('map')) {
+      try {
+        // Create map centered on Copenhagen, Denmark (default location for Tail Mates)
+        const map = L.map('map', {
+          zoomControl: true,
+          attributionControl: true
+        }).setView([55.6761, 12.5683], 18);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 19,
+          subdomains: ['a', 'b', 'c']
+        }).addTo(map);
+        
+        // Add a marker for the default location
+        const marker = L.marker([55.6761, 12.5683])
+          .addTo(map)
+          .bindPopup('<strong>Welcome to Tail Mates!</strong><br/>Find your perfect tail mate here.');
+        
+        // Optional: Open popup after a short delay
+        setTimeout(() => {
+          marker.openPopup();
+        }, 1000);
+        
+        // Handle resize events
+        window.addEventListener('resize', () => {
+          map.invalidateSize();
+        });
+        
+        console.log('Map initialized successfully');
+      } catch (error) {
+        console.error('Error initializing map:', error);
+      }
+    } else {
+      // Retry after a short delay if Leaflet isn't loaded yet
+      setTimeout(initializeMap, 100);
+    }
+  }
+  
+  // Initialize the map when the script loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeMap);
+  } else {
+    initializeMap();
+  }
+</script>
+
+<style>
+  .map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    background-color: #f0f0f0; /* fallback background */
+  }
+  
+  /* Override any potential parent margins/padding */
+  .map-container * {
+    box-sizing: border-box;
+  }
+</style>
