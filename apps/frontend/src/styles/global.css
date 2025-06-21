@@ -1,0 +1,28 @@
+/* CSS Custom Properties */
+:root {}
+
+/* CSS Reset */
+html,
+body,
+menu,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    width: 100%;
+}
+
+/* CSS Utilities */
+.grid {
+    display: grid;
+}
+
+._2xn_auto {
+    grid-template-columns: 1fr auto;
+}
