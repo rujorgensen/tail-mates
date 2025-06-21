@@ -1,17 +1,18 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import { auth } from '@backend/auth';
+import Welcome from "../components/Welcome.astro";
+import FixedBottomMenuLayout from "../layouts/FixedBottomMenuLayout.astro";
+import { auth } from "@backend/auth";
 
 const session = await auth.api.getSession({
     headers: Astro.request.headers,
 });
 
 if (!session) {
-    return Astro.redirect('/sign-in');
+    return Astro.redirect("/sign-in");
 }
 ---
 
-<Layout>
-    <Welcome {session} />
-</Layout>
+<FixedBottomMenuLayout>
+    <Welcome slot="body" {session} />
+</FixedBottomMenuLayout>
+

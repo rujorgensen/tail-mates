@@ -1,22 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Map from '../components/Map.astro';
+import Map from "../components/Map.astro";
+import FixedBottomMenuLayout from "../layouts/FixedBottomMenuLayout.astro";
 ---
 
-<Layout title="Map - Tail Mates">
-	<div class="map-page">
-		<Map />
-	</div>
-</Layout>
-
-<style>
-	/* Ensure full-page layout for the map */
-	.map-page {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		z-index: 1;
-	}
-</style>
+<FixedBottomMenuLayout title="Map - Tail Mates">
+	<Map slot="body" />
+	<li slot="buttons"><button>Save</button></li>
+	<li slot="buttons"><button>Cancel</button></li>
+</FixedBottomMenuLayout>
