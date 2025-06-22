@@ -1,7 +1,7 @@
 {
   "name": "tail-mates",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "scripts": {
     "upd": "ncu -i --format group",
     "web-components:build": "bun build ./libs/frontend/web-components/src/index.ts --outdir ./dist/libs/frontend/web-components --format esm",
