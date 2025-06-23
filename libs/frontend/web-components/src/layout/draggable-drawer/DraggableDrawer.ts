@@ -1,35 +1,38 @@
-import { css, html, LitElement, TemplateResult } from 'lit';
-import { property, state } from 'lit/decorators.js';
-// customElement, 
+import { css, html, LitElement, type TemplateResult } from 'lit';
+import { state, customElement, property } from 'lit/decorators.js';
+
+// customElement,
 import { SlideY } from './slide';
 
 export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
-  color?: string;
-  backgroundColor?: string;
-  /** Optional click handler */
-  onClick?: () => void;
+	/** Is this the principal call to action on the page? */
+	color?: string;
+	backgroundColor?: string;
+	/** Optional click handler */
+	onClick?: () => void;
 }
 
 const INERTIA_LIMIT: number = 1.8;
 
-// @customElement('draggable-drawer')
+@customElement('draggable-drawer')
 export class DraggableDrawer extends LitElement {
-  @property({ type: String })
-  private readonly color?: string;
+	@property({
+		type: String,
+	})
+	private readonly color?: string;
 
-  @state()
-  private state: 'closed' | 'dragged' | 'open' = 'closed';
+	@state()
+	private state: 'closed' | 'dragged' | 'open' = 'closed';
 
-  @state()
-  private dragPixels: number = 0
+	@state()
+	private dragPixels: number = 0;
 
-  @state()
-  private restingPixels: number = 0
+	@state()
+	private restingPixels: number = 0;
 
-  private slideY: SlideY | undefined;
+	private slideY: SlideY | undefined;
 
-  static readonly styles = css`
+	static readonly styles = css`
     #container { 
       background-color: palegoldenrod;
       height: 100%;

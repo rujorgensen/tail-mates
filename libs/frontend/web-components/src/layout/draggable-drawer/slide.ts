@@ -1,29 +1,27 @@
 export class SlideY {
-    private startY: number | null = null;
-    private deltaY: number | null = null;
-    private startTime: number | null = null;
-    private lastY: number | null = null;
-    private lastTime: number | null = null;
-    private readonly onMove: (event: any) => void;
-    private readonly onRelease: (event: any) => void;
+	private startY: number | null = null;
+	private deltaY: number | null = null;
+	private startTime: number | null = null;
+	private lastY: number | null = null;
+	private lastTime: number | null = null;
+	private readonly onMove: (event: any) => void;
+	private readonly onRelease: (event: any) => void;
 
-    constructor(
-        private readonly _handle: Element,
-        private readonly _hostElement: Element,
-        private readonly cbs: {
-            dragged?: (
-                dragPixels: number,
-            ) => void,
-            released?: (
-                inertia: number,
-            ) => void,
-        },
-    ) {
-        this._handle.setAttribute('style', 'touch-action: none;');
-        this.onMove = this.moved.bind(this);
-        this.onRelease = this.released.bind(this);
-        this._handle.addEventListener('pointerdown', this.pressed.bind(this), { passive: true });
-    }
+	constructor(
+		private readonly _handle: Element,
+		private readonly _hostElement: Element,
+		private readonly cbs: {
+			dragged?: (dragPixels: number) => void;
+			released?: (inertia: number) => void;
+		},
+	) {
+		this._handle.setAttribute('style', 'touch-action: none;');
+		this.onMove = this.moved.bind(this);
+		this.onRelease = this.released.bind(this);
+		this._handle.addEventListener('pointerdown', this.pressed.bind(this), {
+			passive: true,
+		});
+	}
 
     private pressed(
         event: any,

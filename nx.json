@@ -1,55 +1,55 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "web-components:build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
-      "cache": true
-    },
-    "build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
-      "cache": true
-    },
-    "storybook-build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
-      "cache": true
-    },
-    "auth:generate": {
-      "outputs": [
-        "{projectRoot}/prisma"
-      ],
-      "cache": true
-    }
-  },
-  "plugins": [
-    {
-      "plugin": "@nx/storybook/plugin",
-      "options": {
-        "serveStorybookTargetName": "storybook",
-        "buildStorybookTargetName": "build-storybook",
-        "testStorybookTargetName": "test-storybook",
-        "staticStorybookTargetName": "static-storybook"
-      }
-    },
-    {
-      "plugin": "@nx/vite/plugin",
-      "options": {
-        "buildTargetName": "build",
-        "testTargetName": "test",
-        "serveTargetName": "serve",
-        "devTargetName": "dev",
-        "previewTargetName": "preview",
-        "serveStaticTargetName": "serve-static",
-        "typecheckTargetName": "typecheck",
-        "buildDepsTargetName": "build-deps",
-        "watchDepsTargetName": "watch-deps"
-      }
-    }
-  ],
-  "nxCloudId": "684edb35c2aab92066a3ea5b"
+	"$schema": "./node_modules/nx/schemas/nx-schema.json",
+	"targetDefaults": {
+		"web-components:build": {
+			"outputs": [
+				"{projectRoot}/dist"
+			],
+			"cache": true
+		},
+		"build": {
+			"outputs": [
+				"{projectRoot}/dist"
+			],
+			"cache": true
+		},
+		"storybook-build": {
+			"outputs": [
+				"{projectRoot}/dist"
+			],
+			"cache": true
+		},
+		"auth:generate": {
+			"outputs": [
+				"{projectRoot}/prisma"
+			],
+			"cache": true
+		}
+	},
+	"plugins": [
+		{
+			"plugin": "@nx/storybook/plugin",
+			"options": {
+				"serveStorybookTargetName": "storybook",
+				"buildStorybookTargetName": "build-storybook",
+				"testStorybookTargetName": "test-storybook",
+				"staticStorybookTargetName": "static-storybook"
+			}
+		},
+		{
+			"plugin": "@nx/vite/plugin",
+			"options": {
+				"buildTargetName": "build",
+				"testTargetName": "test",
+				"serveTargetName": "serve",
+				"devTargetName": "dev",
+				"previewTargetName": "preview",
+				"serveStaticTargetName": "serve-static",
+				"typecheckTargetName": "typecheck",
+				"buildDepsTargetName": "build-deps",
+				"watchDepsTargetName": "watch-deps"
+			}
+		}
+	],
+	"nxCloudId": "684edb35c2aab92066a3ea5b"
 }
