@@ -2,10 +2,9 @@ import { html } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { fn } from 'storybook/test';
 import type { ButtonProps } from './DraggableDrawer';
-import { DraggableDrawer } from './DraggableDrawer';
 import imageFile from '../../../.storybook/static/map.png';
 
-customElements.define('draggable-drawer', DraggableDrawer);
+import './DraggableDrawer';
 
 const image = {
 	src: imageFile,

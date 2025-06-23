@@ -1,13 +1,14 @@
 ---
 import astroLogo from '../assets/astro.svg';
-import background from '../assets/background.svg';
+// import background from '../assets/background.svg';
 import HelloWorld from './HelloWorld.svelte';
 
 const { session } = Astro.props;
 ---
 
 <div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<!-- <img id="background" src={background.src} alt="" fetchpriority="high" />
+	 -->
 	<main>
 		<section id="hero">
 			<a href="https://astro.build"
@@ -27,7 +28,7 @@ const { session } = Astro.props;
 </div>
 
 <style>
-	#background {
+	/* #background {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -35,7 +36,7 @@ const { session } = Astro.props;
 		height: 100%;
 		z-index: -1;
 		filter: blur(100px);
-	}
+	} */
 
 	#container {
 		font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova",

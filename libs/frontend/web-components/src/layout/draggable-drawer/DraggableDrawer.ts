@@ -77,7 +77,7 @@ export class DraggableDrawer extends LitElement {
 
     #drag-handle {
       cursor: pointer;
-      padding: 10px;
+      padding: 20px;
       text-align: center;
       user-select: none;
       background-color: var(--bg-clr, #00000000);
@@ -99,101 +99,115 @@ export class DraggableDrawer extends LitElement {
     }
   `;
 
-  protected firstUpdated(
+	protected firstUpdated(
 
-  ): void {
-    const dragHandle = this.renderRoot.querySelector('#drag-handle');
-    const aside = this.renderRoot.querySelector('aside');
-    const container = this.renderRoot.querySelector('#container');
+	): void {
+		const dragHandle = this.renderRoot.querySelector('#drag-handle');
+		const aside = this.renderRoot.querySelector('aside');
+		const container = this.renderRoot.querySelector('#container');
 
-    if (this.color) {
-      aside?.style.setProperty('--bg-clr', this.color);
-    }
+		if (this.color) {
+			aside?.style.setProperty('--bg-clr', this.color);
+		}
 
-    if (dragHandle && aside && container) {
-      const containerHeight = container.offsetHeight;
-      const handleHeight = dragHandle.offsetHeight;
-      const availableSpace = containerHeight - handleHeight;
+		if (!dragHandle || !aside || !container) {
+			throw new Error(
+				'DraggableDrawer: Missing required elements. Ensure #drag-handle, aside, and #container are present in the template.',
+			);
+		}
 
-      this.restingPixels = 0;
-      aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
+		const containerHeight = (container as any).offsetHeight;
+		const handleHeight = (dragHandle as any).offsetHeight;
+		const availableSpace = containerHeight - handleHeight;
 
-      this.slideY = new SlideY(
-        dragHandle,
-        container,
-        {
-          dragged: (
-            dragPixels: number,
-          ) => {
-            this.state = 'dragged';
-            this.dragPixels = Math.min(availableSpace, dragPixels);
-            aside.style.setProperty('--dragged-pixels', this.dragPixels + 'px');
-          },
+		this.restingPixels = 0;
+		aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
 
-          released: (
-            inertia: number,
-          ) => {
-            console.log('inertia', inertia);
-            const position = this.dragPixels + this.restingPixels;
+		this.slideY = new SlideY(dragHandle, container, {
+			dragged: (dragPixels: number) => {
+				this.state = 'dragged';
+				this.dragPixels = Math.min(availableSpace, dragPixels);
+				aside.style.setProperty(
+					'--dragged-pixels',
+					this.dragPixels + 'px',
+				);
+			},
 
-            // This svipe had high inertia
-            if (Math.abs(inertia) > INERTIA_LIMIT) {
-              if (inertia < 0) {
-                this.restingPixels = 0;
-                this.state = 'closed';
-              } else {
-                this.state = 'open';
-                this.restingPixels = containerHeight * 0.85;
-              }
+			released: (inertia: number) => {
+				console.log('inertia', inertia);
+				const position = this.dragPixels + this.restingPixels;
 
-              aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
+				// This svipe had high inertia
+				if (Math.abs(inertia) > INERTIA_LIMIT) {
+					console.log(
+						'Inertia exceeded limit. Triggering state change.',
+					);
 
-              this.dispatchEvent(new CustomEvent(this.state, {
-                detail: {}, // optional data
-                bubbles: true,            // allow event to bubble up
-                composed: true            // allow it to cross shadow DOM
-              }));
+					if (inertia < 0) {
+						this.restingPixels = 0;
+						this.state = 'closed';
+					} else {
+						this.state = 'open';
+						this.restingPixels = containerHeight * 0.85;
+					}
 
-              return;
-            }
+					aside.style.setProperty(
+						'--resting-pixels',
+						this.restingPixels + 'px',
+					);
 
-            // Animate to open
-            if ((position > availableSpace / 2)) {
-              this.state = 'open';
-              this.restingPixels = containerHeight * 0.85;
-            } else {
-              this.restingPixels = 0;
-              this.state = 'closed';
-            }
+					this.dispatchEvent(
+						new CustomEvent(this.state, {
+							detail: {}, // optional data
+							bubbles: true, // allow event to bubble up
+							composed: true, // allow it to cross shadow DOM
+						}),
+					);
 
-            this.dispatchEvent(new CustomEvent(this.state, {
-              detail: {}, // optional data
-              bubbles: true, // allow event to bubble up
-              composed: true, // allow it to cross shadow DOM
-            }));
+					return;
+				}
 
-            aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
-          },
-        },
-      );
-    }
-  }
+				// Animate to open
+				if (position > availableSpace / 2) {
+					this.state = 'open';
+					this.restingPixels = containerHeight * 0.85;
+				} else {
+					this.state = 'closed';
+					this.restingPixels = 0;
+				}
 
-  protected render(
-  ): TemplateResult<1> {
-    // Drag here <b>${this.state}</b> ${this.dragPixels}px ${this.inertia} px/ms 
-    return html`
+				this.dispatchEvent(
+					new CustomEvent(this.state, {
+						detail: {}, // optional data
+						bubbles: true, // allow event to bubble up
+						composed: true, // allow it to cross shadow DOM
+					}),
+				);
+
+				aside.style.setProperty(
+					'--resting-pixels',
+					this.restingPixels + 'px',
+				);
+			},
+		});
+	}
+
+	protected render(
+		
+	): TemplateResult<1> {
+		// Drag here <b>${this.state}</b> ${this.dragPixels}px ${this.inertia} px/ms
+		return html`
     <div id="container">
       <main>
         <slot name="body"></slot>
       </main>
       <aside state="${this.state}">
         <div id="drag-handle"></div>
-        <section>
+        <section style="background-color: ${this.color ?? '0x00000000'};">
           <slot name="drawer"></slot>
         </section>
       </aside>
     </div>
   `;
-  }
+	}
 }
