@@ -1,10 +1,10 @@
 <script>
-  let name = 'Svelte';
-  let count = 0;
+const name = 'Svelte';
+let count = 0;
 
-  function increment() {
-    count += 1;
-  }
+function increment() {
+	count += 1;
+}
 </script>
 
 <div class="hello-world">
@@ -20,7 +20,11 @@
     padding: 1rem;
     border: 2px solid #ff3e00;
     border-radius: 8px;
-    background: linear-gradient(45deg, rgba(255, 62, 0, 0.1), rgba(255, 62, 0, 0.05));
+    background: linear-gradient(
+      45deg,
+      rgba(255, 62, 0, 0.1),
+      rgba(255, 62, 0, 0.05)
+    );
     margin: 1rem 0;
     text-align: center;
   }

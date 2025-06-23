@@ -3,35 +3,41 @@
  * A customizable button web component for the Tail Mates application
  */
 export class TmButton extends HTMLElement {
-  private button!: HTMLButtonElement;
+	private button!: HTMLButtonElement;
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.button = document.createElement('button');
-    this.render();
-  }
+	constructor() {
+		super();
+		this.attachShadow({
+			mode: 'open',
+		});
+		this.button = document.createElement('button');
+		this.render();
+	}
 
-  static get observedAttributes() {
-    return ['variant', 'size', 'disabled'];
-  }
+	static get observedAttributes() {
+		return [
+			'variant',
+			'size',
+			'disabled',
+		];
+	}
 
-  connectedCallback() {
-    this.updateButton();
-    this.addEventListener('click', this.handleClick);
-  }
+	connectedCallback() {
+		this.updateButton();
+		this.addEventListener('click', this.handleClick);
+	}
 
-  disconnectedCallback() {
-    this.removeEventListener('click', this.handleClick);
-  }
+	disconnectedCallback() {
+		this.removeEventListener('click', this.handleClick);
+	}
 
-  attributeChangedCallback() {
-    this.updateButton();
-  }
+	attributeChangedCallback() {
+		this.updateButton();
+	}
 
-  private render() {
-    const style = document.createElement('style');
-    style.textContent = `
+	private render() {
+		const style = document.createElement('style');
+		style.textContent = `
       :host {
         display: inline-block;
       }
@@ -104,36 +110,40 @@ export class TmButton extends HTMLElement {
       }
     `;
 
-    this.shadowRoot!.appendChild(style);
-    this.shadowRoot!.appendChild(this.button);
+		this.shadowRoot!.appendChild(style);
+		this.shadowRoot!.appendChild(this.button);
 
-    const slot = document.createElement('slot');
-    this.button.appendChild(slot);
-  }
+		const slot = document.createElement('slot');
+		this.button.appendChild(slot);
+	}
 
-  private updateButton() {
-    const variant = this.getAttribute('variant') || 'primary';
-    const size = this.getAttribute('size') || 'medium';
-    const disabled = this.hasAttribute('disabled');
+	private updateButton() {
+		const variant = this.getAttribute('variant') || 'primary';
+		const size = this.getAttribute('size') || 'medium';
+		const disabled = this.hasAttribute('disabled');
 
-    this.button.className = `${variant} ${size}`;
-    this.button.disabled = disabled;
-  }
+		this.button.className = `${variant} ${size}`;
+		this.button.disabled = disabled;
+	}
 
-  private handleClick = (event: Event) => {
-    if (this.hasAttribute('disabled')) {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
+	private handleClick = (event: Event) => {
+		if (this.hasAttribute('disabled')) {
+			event.preventDefault();
+			event.stopPropagation();
+			return;
+		}
 
-    // Dispatch custom event
-    this.dispatchEvent(new CustomEvent('tm-click', {
-      bubbles: true,
-      composed: true,
-      detail: { originalEvent: event }
-    }));
-  };
+		// Dispatch custom event
+		this.dispatchEvent(
+			new CustomEvent('tm-click', {
+				bubbles: true,
+				composed: true,
+				detail: {
+					originalEvent: event,
+				},
+			}),
+		);
+	};
 }
 
 // Register the custom element

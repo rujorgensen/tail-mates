@@ -1,59 +1,64 @@
-import { css, html, LitElement, TemplateResult } from 'lit';
-import { property, state } from 'lit/decorators.js';
-// customElement, 
+import { css, html, LitElement, type TemplateResult } from 'lit';
+import { state, customElement, property } from 'lit/decorators.js';
+
+// customElement,
 import { SlideY } from './slide';
 
 export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
-  color?: string;
-  backgroundColor?: string;
-  /** Optional click handler */
-  onClick?: () => void;
+	/** Is this the principal call to action on the page? */
+	color?: string;
+	backgroundColor?: string;
+	/** Optional click handler */
+	onClick?: () => void;
 }
 
 const INERTIA_LIMIT: number = 1.8;
 
-// @customElement('draggable-drawer')
+@customElement('draggable-drawer')
 export class DraggableDrawer extends LitElement {
-  @property({ type: String })
-  private readonly color?: string;
+	@property({
+		type: String,
+	})
+	private readonly color?: string;
 
-  @state()
-  private state: 'closed' | 'dragged' | 'open' = 'closed';
+	@state()
+	private state: 'closed' | 'dragged' | 'open' = 'closed';
 
-  @state()
-  private dragPixels: number = 0
+	@state()
+	private dragPixels: number = 0;
 
-  @state()
-  private restingPixels: number = 0
+	@state()
+	private restingPixels: number = 0;
 
-  private slideY: SlideY | undefined;
+	private slideY: SlideY | undefined;
 
-  static readonly styles = css`
-    #container { 
-      background-color: palegoldenrod;
-      height: 100%;
-      display: grid;
-      overflow: hidden;
-    }
+	static readonly styles = css`
+		#container { 
+			height: 100%;
+			display: grid;
+			overflow: hidden;
+		}
 
-    main{ 
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-    }
-
-    aside { 
-      box-shadow: rgb(183, 183, 183) 0px -3px 26px;
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      display: grid;
-      align-self: end; /* Pushes it to the bottom */
-      
-      /* TODO, MOVE TO WHERE THE COMPONENT IS USED */
-      border-radius: 30px 30px 0 0;
-      overflow: hidden;
-    }
-      
+		main{ 
+			grid-column: 1 / -1;
+			grid-row: 1 / -1;
+			z-index: 1;
+			height: calc(100% - 20px); /* TODO The handle height */
+		}
+		
+		aside { 
+			z-index: 2;
+			box-shadow: rgb(183, 183, 183) 0px -3px 26px;
+			grid-column: 1 / -1;
+			grid-row: 1 / -1;
+			display: grid;
+			align-self: end; /* Pushes it to the bottom */
+			
+			/* TODO, MOVE TO WHERE THE COMPONENT IS USED */
+			border-radius: 30px 30px 0 0;
+			overflow: hidden;
+		}
+		
     aside[state="open"] > section, aside[state="closed"] > section {
       transition: height 100ms ease-in-out;
     }
@@ -72,7 +77,7 @@ export class DraggableDrawer extends LitElement {
 
     #drag-handle {
       cursor: pointer;
-      padding: 10px;
+      padding: 20px;
       text-align: center;
       user-select: none;
       background-color: var(--bg-clr, #00000000);
@@ -94,101 +99,115 @@ export class DraggableDrawer extends LitElement {
     }
   `;
 
-  protected firstUpdated(
+	protected firstUpdated(
 
-  ): void {
-    const dragHandle = this.renderRoot.querySelector('#drag-handle');
-    const aside = this.renderRoot.querySelector('aside');
-    const container = this.renderRoot.querySelector('#container');
+	): void {
+		const dragHandle = this.renderRoot.querySelector('#drag-handle');
+		const aside = this.renderRoot.querySelector('aside');
+		const container = this.renderRoot.querySelector('#container');
 
-    if (this.color) {
-      aside?.style.setProperty('--bg-clr', this.color);
-    }
+		if (this.color) {
+			aside?.style.setProperty('--bg-clr', this.color);
+		}
 
-    if (dragHandle && aside && container) {
-      const containerHeight = container.offsetHeight;
-      const handleHeight = dragHandle.offsetHeight;
-      const availableSpace = containerHeight - handleHeight;
+		if (!dragHandle || !aside || !container) {
+			throw new Error(
+				'DraggableDrawer: Missing required elements. Ensure #drag-handle, aside, and #container are present in the template.',
+			);
+		}
 
-      this.restingPixels = 0;
-      aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
+		const containerHeight = (container as any).offsetHeight;
+		const handleHeight = (dragHandle as any).offsetHeight;
+		const availableSpace = containerHeight - handleHeight;
 
-      this.slideY = new SlideY(
-        dragHandle,
-        container,
-        {
-          dragged: (
-            dragPixels: number,
-          ) => {
-            this.state = 'dragged';
-            this.dragPixels = Math.min(availableSpace, dragPixels);
-            aside.style.setProperty('--dragged-pixels', this.dragPixels + 'px');
-          },
+		this.restingPixels = 0;
+		aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
 
-          released: (
-            inertia: number,
-          ) => {
-            console.log('inertia', inertia);
-            const position = this.dragPixels + this.restingPixels;
+		this.slideY = new SlideY(dragHandle, container, {
+			dragged: (dragPixels: number) => {
+				this.state = 'dragged';
+				this.dragPixels = Math.min(availableSpace, dragPixels);
+				aside.style.setProperty(
+					'--dragged-pixels',
+					this.dragPixels + 'px',
+				);
+			},
 
-            // This svipe had high inertia
-            if (Math.abs(inertia) > INERTIA_LIMIT) {
-              if (inertia < 0) {
-                this.restingPixels = 0;
-                this.state = 'closed';
-              } else {
-                this.state = 'open';
-                this.restingPixels = containerHeight * 0.85;
-              }
+			released: (inertia: number) => {
+				console.log('inertia', inertia);
+				const position = this.dragPixels + this.restingPixels;
 
-              aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
+				// This svipe had high inertia
+				if (Math.abs(inertia) > INERTIA_LIMIT) {
+					console.log(
+						'Inertia exceeded limit. Triggering state change.',
+					);
 
-              this.dispatchEvent(new CustomEvent(this.state, {
-                detail: {}, // optional data
-                bubbles: true,            // allow event to bubble up
-                composed: true            // allow it to cross shadow DOM
-              }));
+					if (inertia < 0) {
+						this.restingPixels = 0;
+						this.state = 'closed';
+					} else {
+						this.state = 'open';
+						this.restingPixels = containerHeight * 0.85;
+					}
 
-              return;
-            }
+					aside.style.setProperty(
+						'--resting-pixels',
+						this.restingPixels + 'px',
+					);
 
-            // Animate to open
-            if ((position > availableSpace / 2)) {
-              this.state = 'open';
-              this.restingPixels = containerHeight * 0.85;
-            } else {
-              this.restingPixels = 0;
-              this.state = 'closed';
-            }
+					this.dispatchEvent(
+						new CustomEvent(this.state, {
+							detail: {}, // optional data
+							bubbles: true, // allow event to bubble up
+							composed: true, // allow it to cross shadow DOM
+						}),
+					);
 
-            this.dispatchEvent(new CustomEvent(this.state, {
-              detail: {}, // optional data
-              bubbles: true, // allow event to bubble up
-              composed: true, // allow it to cross shadow DOM
-            }));
+					return;
+				}
 
-            aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
-          },
-        },
-      );
-    }
-  }
+				// Animate to open
+				if (position > availableSpace / 2) {
+					this.state = 'open';
+					this.restingPixels = containerHeight * 0.85;
+				} else {
+					this.state = 'closed';
+					this.restingPixels = 0;
+				}
 
-  protected render(
-  ): TemplateResult<1> {
-    // Drag here <b>${this.state}</b> ${this.dragPixels}px ${this.inertia} px/ms 
-    return html`
+				this.dispatchEvent(
+					new CustomEvent(this.state, {
+						detail: {}, // optional data
+						bubbles: true, // allow event to bubble up
+						composed: true, // allow it to cross shadow DOM
+					}),
+				);
+
+				aside.style.setProperty(
+					'--resting-pixels',
+					this.restingPixels + 'px',
+				);
+			},
+		});
+	}
+
+	protected render(
+		
+	): TemplateResult<1> {
+		// Drag here <b>${this.state}</b> ${this.dragPixels}px ${this.inertia} px/ms
+		return html`
     <div id="container">
       <main>
         <slot name="body"></slot>
       </main>
       <aside state="${this.state}">
         <div id="drag-handle"></div>
-        <section>
+        <section style="background-color: ${this.color ?? '0x00000000'};">
           <slot name="drawer"></slot>
         </section>
       </aside>
     </div>
   `;
-  }
+	}
 }

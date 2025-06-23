@@ -1,13 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { auth } from "@backend/auth";
+import Layout from '../layouts/Layout.astro';
+import { auth } from '@backend/auth';
 
 const session = await auth.api.getSession({
 	headers: Astro.request.headers,
 });
 
 if (session) {
-	console.log("User is signed in, signing out ...");
+	console.log('User is signed in, signing out ...');
 	await auth.api.signOut({
 		headers: Astro.request.headers,
 	});

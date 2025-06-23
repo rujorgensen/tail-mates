@@ -1,22 +1,23 @@
 ---
-import packageJson from "../../../../package.json";
+import packageJson from '../../../../package.json';
+import BaseHead from '../components/BaseHead.astro';
 
 export interface Props {
-    title?: string;
+	title?: string;
 }
 
-const { title = "Tail Mates" } = Astro.props;
+const { title = 'Tail Mates' } = Astro.props;
 const version = packageJson.version;
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
+        <BaseHead
+            title={title}
+            description="Tail Mates."
+            image="/og-image.jpg"
+        />
     </head>
     <body>
         <slot />

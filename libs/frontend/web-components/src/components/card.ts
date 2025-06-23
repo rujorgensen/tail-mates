@@ -3,32 +3,37 @@
  * A versatile card component for displaying content with optional header and footer
  */
 export class TmCard extends HTMLElement {
-  private card!: HTMLDivElement;
-  private header!: HTMLDivElement;
-  private content!: HTMLDivElement;
-  private footer!: HTMLDivElement;
+	private card!: HTMLDivElement;
+	private header!: HTMLDivElement;
+	private content!: HTMLDivElement;
+	private footer!: HTMLDivElement;
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.render();
-  }
+	constructor() {
+		super();
+		this.attachShadow({
+			mode: 'open',
+		});
+		this.render();
+	}
 
-  static get observedAttributes() {
-    return ['variant', 'padding'];
-  }
+	static get observedAttributes() {
+		return [
+			'variant',
+			'padding',
+		];
+	}
 
-  connectedCallback() {
-    this.updateCard();
-  }
+	connectedCallback() {
+		this.updateCard();
+	}
 
-  attributeChangedCallback() {
-    this.updateCard();
-  }
+	attributeChangedCallback() {
+		this.updateCard();
+	}
 
-  private render() {
-    const style = document.createElement('style');
-    style.textContent = `
+	private render() {
+		const style = document.createElement('style');
+		style.textContent = `
       :host {
         display: block;
       }
@@ -90,60 +95,60 @@ export class TmCard extends HTMLElement {
       }
     `;
 
-    this.card = document.createElement('div');
-    this.card.className = 'card';
+		this.card = document.createElement('div');
+		this.card.className = 'card';
 
-    this.header = document.createElement('div');
-    this.header.className = 'header';
-    const headerSlot = document.createElement('slot');
-    headerSlot.name = 'header';
-    this.header.appendChild(headerSlot);
+		this.header = document.createElement('div');
+		this.header.className = 'header';
+		const headerSlot = document.createElement('slot');
+		headerSlot.name = 'header';
+		this.header.appendChild(headerSlot);
 
-    this.content = document.createElement('div');
-    this.content.className = 'content';
-    const contentSlot = document.createElement('slot');
-    this.content.appendChild(contentSlot);
+		this.content = document.createElement('div');
+		this.content.className = 'content';
+		const contentSlot = document.createElement('slot');
+		this.content.appendChild(contentSlot);
 
-    this.footer = document.createElement('div');
-    this.footer.className = 'footer';
-    const footerSlot = document.createElement('slot');
-    footerSlot.name = 'footer';
-    this.footer.appendChild(footerSlot);
+		this.footer = document.createElement('div');
+		this.footer.className = 'footer';
+		const footerSlot = document.createElement('slot');
+		footerSlot.name = 'footer';
+		this.footer.appendChild(footerSlot);
 
-    this.card.appendChild(this.header);
-    this.card.appendChild(this.content);
-    this.card.appendChild(this.footer);
+		this.card.appendChild(this.header);
+		this.card.appendChild(this.content);
+		this.card.appendChild(this.footer);
 
-    this.shadowRoot!.appendChild(style);
-    this.shadowRoot!.appendChild(this.card);
+		this.shadowRoot!.appendChild(style);
+		this.shadowRoot!.appendChild(this.card);
 
-    // Hide header and footer if no content is slotted
-    this.updateSlotVisibility();
-  }
+		// Hide header and footer if no content is slotted
+		this.updateSlotVisibility();
+	}
 
-  private updateCard() {
-    const variant = this.getAttribute('variant') || 'default';
-    const padding = this.getAttribute('padding') || 'medium';
+	private updateCard() {
+		const variant = this.getAttribute('variant') || 'default';
+		const padding = this.getAttribute('padding') || 'medium';
 
-    this.card.className = `card ${variant} padding-${padding}`;
-  }
+		this.card.className = `card ${variant} padding-${padding}`;
+	}
 
-  private updateSlotVisibility() {
-    const headerSlot = this.querySelector('[slot="header"]');
-    const footerSlot = this.querySelector('[slot="footer"]');
+	private updateSlotVisibility() {
+		const headerSlot = this.querySelector('[slot="header"]');
+		const footerSlot = this.querySelector('[slot="footer"]');
 
-    if (!headerSlot || !headerSlot.textContent?.trim()) {
-      this.header.classList.add('hidden');
-    } else {
-      this.header.classList.remove('hidden');
-    }
+		if (!headerSlot || !headerSlot.textContent?.trim()) {
+			this.header.classList.add('hidden');
+		} else {
+			this.header.classList.remove('hidden');
+		}
 
-    if (!footerSlot || !footerSlot.textContent?.trim()) {
-      this.footer.classList.add('hidden');
-    } else {
-      this.footer.classList.remove('hidden');
-    }
-  }
+		if (!footerSlot || !footerSlot.textContent?.trim()) {
+			this.footer.classList.add('hidden');
+		} else {
+			this.footer.classList.remove('hidden');
+		}
+	}
 }
 
 // Register the custom element

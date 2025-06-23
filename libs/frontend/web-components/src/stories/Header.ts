@@ -4,17 +4,22 @@ import { Button } from './Button';
 import './header.css';
 
 type User = {
-  name: string;
+	name: string;
 };
 
 export interface HeaderProps {
-  user?: User;
-  onLogin?: () => void;
-  onLogout?: () => void;
-  onCreateAccount?: () => void;
+	user?: User;
+	onLogin?: () => void;
+	onLogout?: () => void;
+	onCreateAccount?: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => html`
+export const Header = ({
+	user,
+	onLogin,
+	onLogout,
+	onCreateAccount,
+}: HeaderProps) => html`
   <header>
     <div class="storybook-header">
       <div>
@@ -37,19 +42,25 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
         <h1>Acme</h1>
       </div>
       <div>
-        ${user
-          ? Button({ size: 'small', onClick: onLogout, label: 'Log out' })
-          : html`${Button({
-              size: 'small',
-              onClick: onLogin,
-              label: 'Log in',
-            })}
+        ${
+			user
+				? Button({
+						size: 'small',
+						onClick: onLogout,
+						label: 'Log out',
+					})
+				: html`${Button({
+						size: 'small',
+						onClick: onLogin,
+						label: 'Log in',
+					})}
             ${Button({
-              primary: true,
-              size: 'small',
-              onClick: onCreateAccount,
-              label: 'Sign up',
-            })}`}
+				primary: true,
+				size: 'small',
+				onClick: onCreateAccount,
+				label: 'Sign up',
+			})}`
+		}
       </div>
     </div>
   </header>
