@@ -1,7 +1,7 @@
 {
   "name": "tail-mates",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "scripts": {
     "upd": "ncu -i --format group",
     "web-components:build": "bun build ./libs/frontend/web-components/src/index.ts --outdir ./dist/libs/frontend/web-components --format esm",
@@ -43,7 +43,7 @@
     "@types/bun": "^1.2.16",
     "@types/leaflet": "^1.9.18",
     "astro": "^5.10.0",
-    "better-auth": "1.2.9",
+    "better-auth": "1.2.10",
     "elysia": "latest",
     "leaflet": "^1.9.4",
     "prisma-dbml-generator": "^0.12.0",

@@ -33,30 +33,32 @@ export class DraggableDrawer extends LitElement {
 	private slideY: SlideY | undefined;
 
 	static readonly styles = css`
-    #container { 
-      background-color: palegoldenrod;
-      height: 100%;
-      display: grid;
-      overflow: hidden;
-    }
+		#container { 
+			height: 100%;
+			display: grid;
+			overflow: hidden;
+		}
 
-    main{ 
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-    }
-
-    aside { 
-      box-shadow: rgb(183, 183, 183) 0px -3px 26px;
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      display: grid;
-      align-self: end; /* Pushes it to the bottom */
-      
-      /* TODO, MOVE TO WHERE THE COMPONENT IS USED */
-      border-radius: 30px 30px 0 0;
-      overflow: hidden;
-    }
-      
+		main{ 
+			grid-column: 1 / -1;
+			grid-row: 1 / -1;
+			z-index: 1;
+			height: calc(100% - 20px); /* TODO The handle height */
+		}
+		
+		aside { 
+			z-index: 2;
+			box-shadow: rgb(183, 183, 183) 0px -3px 26px;
+			grid-column: 1 / -1;
+			grid-row: 1 / -1;
+			display: grid;
+			align-self: end; /* Pushes it to the bottom */
+			
+			/* TODO, MOVE TO WHERE THE COMPONENT IS USED */
+			border-radius: 30px 30px 0 0;
+			overflow: hidden;
+		}
+		
     aside[state="open"] > section, aside[state="closed"] > section {
       transition: height 100ms ease-in-out;
     }

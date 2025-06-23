@@ -19,15 +19,11 @@ const { session } = Astro.props;
 				/></a
 			>
 			<h1>
-				Hi 👋 {session.user.name}!<br>You are logged in as {session.user.email}.
+				Hi 👋 {session.user.name}!<br />You are logged in as {session.user.email}.
 			</h1>
 			<HelloWorld client:load />
-			<section id="links">
-				<a class="button" href="/map">🌎View our map</a>
-			</section>
 		</section>
 	</main>
-
 </div>
 
 <style>
