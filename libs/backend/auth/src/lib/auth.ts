@@ -1,6 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
-import { PrismaClient } from '@prisma-types/tail-mates';
+import { userRegistered } from './discord.js';
 
 const prisma = new PrismaClient();
 
@@ -11,6 +11,15 @@ export const auth = betterAuth({
 	trustedOrigins: [
 		'http://localhost:3101',
 	],
+	databaseHooks: {
+		user: {
+			create: {
+				after: async (user) => {
+					userRegistered(user);
+				}
+			},
+		},
+	},
 	socialProviders: {
 		google: {
 			clientId: process.env['GOOGLE_CLIENT_ID'] as string,
