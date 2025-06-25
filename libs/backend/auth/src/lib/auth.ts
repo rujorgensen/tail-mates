@@ -1,4 +1,5 @@
 import { betterAuth } from 'better-auth';
+import { PrismaClient } from '@prisma-types/tail-mates';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { userRegistered } from './discord.js';
 
