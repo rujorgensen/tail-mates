@@ -5,10 +5,9 @@
 	"scripts": {
 		"upd": "ncu -i --format group",
 		"web-components:build": "bun build ./libs/frontend/web-components/src/index.ts --outdir ./dist/libs/frontend/web-components --format esm",
-		"dev-frontend": "astro dev --config apps/frontend/astro.config.mjs",
-		"dev-backend": "bun run --watch apps/backend/src/index.ts",
-		"build": "astro build",
-		"preview": "astro preview",
+		"//-00a": "// ****************************************************************************",
+		"//-00b": "// *** Storybook                                                               ",
+		"//-00c": "// ****************************************************************************",
 		"storybook-build": "storybook build --config-dir libs/frontend/web-components/.storybook --output-dir ./dist/libs/frontend/storybook-web-components",
 		"storybook:docker:build": "docker build -f ./.deploy/web-components.storybook.Dockerfile -t web-components-storybook .",
 		"storybook:docker:run": "docker run -p 3021:3021 web-components-storybook",
