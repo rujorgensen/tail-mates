@@ -169,7 +169,8 @@ if (session) {
 			authClient.signIn.social(
 				{
 					provider: 'google',
-					callbackURL: '/',
+					// The URL to redirect to after sign-in
+					callbackURL: import.meta.env.PROD  ? '/' : 'http://localhost:3101/',
 				},
 				{
 					onSuccess: () => {
