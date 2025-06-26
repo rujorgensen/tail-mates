@@ -33,6 +33,9 @@ export const auth = betterAuth({
 	trustedOrigins: [
 		'http://localhost:3101',
 	],
+	emailAndPassword: {
+		enabled: true
+	},
 	databaseHooks: {
 		user: {
 			create: {
