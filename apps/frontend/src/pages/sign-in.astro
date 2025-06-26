@@ -52,6 +52,16 @@ if (session) {
 					Continue with Google
 				</button>
 
+			<!-- --
+				Temporarily hidden.
+				
+				<div class="signup-link">
+					<p>
+						Don't have an account?
+						<a href="/sign-up">Sign up here</a>
+					</p>
+				</div>
+				-->
 				<div class="legal-links">
 					<p>
 						By signing in, you agree to our
@@ -134,6 +144,27 @@ if (session) {
 
 	.google-icon {
 		flex-shrink: 0;
+	}
+
+	.signup-link {
+		margin: 1.5rem 0;
+		padding-top: 1rem;
+	}
+
+	.signup-link p {
+		font-size: 0.875rem;
+		color: #666;
+		margin: 0;
+	}
+
+	.signup-link a {
+		color: #4285f4;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.signup-link a:hover {
+		text-decoration: underline;
 	}
 
 	.legal-links {
