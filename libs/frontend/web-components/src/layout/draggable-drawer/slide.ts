@@ -4,8 +4,8 @@ export class SlideY {
 	private startTime: number | null = null;
 	private lastY: number | null = null;
 	private lastTime: number | null = null;
-	private readonly onMove: (event: any) => void;
-	private readonly onRelease: (event: any) => void;
+	private readonly onMove: (event: Event) => void;
+	private readonly onRelease: (event: Event) => void;
 
 	constructor(
 		private readonly _handle: Element,
