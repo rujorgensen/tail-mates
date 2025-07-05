@@ -1,4 +1,9 @@
-import { css, html, LitElement, type TemplateResult } from 'lit';
+import {
+	type TemplateResult,
+	css,
+	html,
+	LitElement,
+} from 'lit';
 import { state, customElement, property } from 'lit/decorators.js';
 
 // customElement,
@@ -33,32 +38,32 @@ export class DraggableDrawer extends LitElement {
 	private slideY: SlideY | undefined;
 
 	static readonly styles = css`
-		#container { 
-			height: 100%;
-			display: grid;
-			overflow: hidden;
-		}
+	#container { 
+		height: 100%;
+		display: grid;
+		overflow: hidden;
+	}
 
-		main{ 
-			grid-column: 1 / -1;
-			grid-row: 1 / -1;
-			z-index: 1;
-			height: calc(100% - 20px); /* TODO The handle height */
-		}
+	main{ 
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		z-index: 1;
+		height: calc(100% - 20px); /* TODO The handle height */
+	}
+	
+	aside { 
+		z-index: 2;
+		box-shadow: rgb(183, 183, 183) 0px -3px 26px;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		display: grid;
+		align-self: end; /* Pushes it to the bottom */
 		
-		aside { 
-			z-index: 2;
-			box-shadow: rgb(183, 183, 183) 0px -3px 26px;
-			grid-column: 1 / -1;
-			grid-row: 1 / -1;
-			display: grid;
-			align-self: end; /* Pushes it to the bottom */
-			
-			/* TODO, MOVE TO WHERE THE COMPONENT IS USED */
-			border-radius: 30px 30px 0 0;
-			overflow: hidden;
-		}
-		
+		/* TODO, MOVE TO WHERE THE COMPONENT IS USED */
+		border-radius: 30px 30px 0 0;
+		overflow: hidden;
+	}
+	
     aside[state="open"] > section, aside[state="closed"] > section {
       transition: height 100ms ease-in-out;
     }
@@ -71,7 +76,7 @@ export class DraggableDrawer extends LitElement {
       height: calc(var(--dragged-pixels) + var(--resting-pixels));
     }
       
-     aside[state="closed"] > section {
+    aside[state="closed"] > section {
       height: var(--resting-pixels);
     }
 
@@ -85,7 +90,7 @@ export class DraggableDrawer extends LitElement {
       background-color: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-    }
+	}
 
     #drag-handle::after{
       content: "";
@@ -96,19 +101,18 @@ export class DraggableDrawer extends LitElement {
       border-radius: 46px;
       margin-top: 4px;
       margin-inline: auto;
-    }
+  	}
   `;
 
+	/**
+	 * @returns { void }
+	 */
 	protected firstUpdated(
 
 	): void {
-		const dragHandle = this.renderRoot.querySelector('#drag-handle');
-		const aside = this.renderRoot.querySelector('aside');
-		const container = this.renderRoot.querySelector('#container');
-
-		if (this.color) {
-			aside?.style.setProperty('--bg-clr', this.color);
-		}
+		const dragHandle: HTMLElement | null = this.renderRoot.querySelector('#drag-handle');
+		const aside: HTMLElement | null = this.renderRoot.querySelector('aside');
+		const container: HTMLElement | null = this.renderRoot.querySelector('#container');
 
 		if (!dragHandle || !aside || !container) {
 			throw new Error(
@@ -116,20 +120,23 @@ export class DraggableDrawer extends LitElement {
 			);
 		}
 
-		const containerHeight = (container as any).offsetHeight;
-		const handleHeight = (dragHandle as any).offsetHeight;
+		if (this.color) {
+			aside.style.setProperty('--bg-clr', this.color);
+		}
+
+		const containerHeight = container.offsetHeight;
+		const handleHeight = dragHandle.offsetHeight;
 		const availableSpace = containerHeight - handleHeight;
 
 		this.restingPixels = 0;
-		aside.style.setProperty('--resting-pixels', this.restingPixels + 'px');
+		aside.style.setProperty('--resting-pixels', `${this.restingPixels}px`);
 
 		this.slideY = new SlideY(dragHandle, container, {
 			dragged: (dragPixels: number) => {
 				this.state = 'dragged';
 				this.dragPixels = Math.min(availableSpace, dragPixels);
 				aside.style.setProperty(
-					'--dragged-pixels',
-					this.dragPixels + 'px',
+					'--dragged-pixels', `${this.dragPixels}px`,
 				);
 			},
 
@@ -152,8 +159,7 @@ export class DraggableDrawer extends LitElement {
 					}
 
 					aside.style.setProperty(
-						'--resting-pixels',
-						this.restingPixels + 'px',
+						'--resting-pixels', `${this.restingPixels}px`,
 					);
 
 					this.dispatchEvent(
@@ -185,15 +191,14 @@ export class DraggableDrawer extends LitElement {
 				);
 
 				aside.style.setProperty(
-					'--resting-pixels',
-					this.restingPixels + 'px',
+					'--resting-pixels', `${this.restingPixels}px`,
 				);
 			},
 		});
 	}
 
 	protected render(
-		
+
 	): TemplateResult<1> {
 		// Drag here <b>${this.state}</b> ${this.dragPixels}px ${this.inertia} px/ms
 		return html`
