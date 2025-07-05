@@ -17,7 +17,8 @@ export interface ButtonProps {
 	onClick?: () => void;
 }
 
-const INERTIA_LIMIT: number = 1.8;
+/* Lower is more sensitive */
+const INERTIA_LIMIT: number = 0.8;
 
 @customElement('draggable-drawer')
 export class DraggableDrawer extends LitElement {
@@ -48,7 +49,7 @@ export class DraggableDrawer extends LitElement {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
 		z-index: 1;
-		height: calc(100% - 20px); /* TODO The handle height */
+		height: calc(100% - 0px); /* TODO The handle height */
 	}
 	
 	aside { 
@@ -57,7 +58,8 @@ export class DraggableDrawer extends LitElement {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
 		display: grid;
-		align-self: end; /* Pushes it to the bottom */
+		/* Pushes it to the bottom */
+		align-self: end; 
 		
 		/* TODO, MOVE TO WHERE THE COMPONENT IS USED */
 		border-radius: 30px 30px 0 0;
@@ -90,6 +92,14 @@ export class DraggableDrawer extends LitElement {
       background-color: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+
+	  /* Don't show blue background when held */
+	  -webkit-touch-callout: none; /* Disable callout, iOS Safari */
+  	  -webkit-user-select: none;   /* Disable selection, Safari */
+  	  -moz-user-select: none;      /* Disable selection, Firefox */
+  	  -ms-user-select: none;       /* Disable selection, IE/Edge */
+  	  user-select: none;           /* Disable selection, standard */
+  	  -webkit-tap-highlight-color: transparent; 
 	}
 
     #drag-handle::after{
