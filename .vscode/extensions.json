@@ -3,5 +3,7 @@
 		"astro-build.astro-vscode",
 		"biomejs.biome"
 	],
-	"unwantedRecommendations": []
+	"unwantedRecommendations": [
+		"esbenp.prettier-vscode"
+	]
 }
