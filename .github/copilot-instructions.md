@@ -4,7 +4,7 @@ This is a TypeScript based repository using Bun and Elysia.
 - **Language**: TypeScript
 - **Runtime**: Bun
 - **Backend Frameworks**: Elysia / Bun
-- **Frontend Frameworks**: Astro and Svelte
+- **Frontend Framework**: Angular
 - **Package Manager and Dependency Management**: Bun / Bun.lockb
 - **Testing**: Bun
 - **Documentation**: Markdown files in `docs/`

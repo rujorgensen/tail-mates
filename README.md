@@ -12,7 +12,7 @@ Tailmate is a social app for dog owners designed to make walk-time more social, 
 
 ## 🧱 Tech Stack
 
-- Frontend: Astro & Svelte – Fast, content-focused frontend framework with partial hydration.
+- Frontend: Angular – Production grade framework, server side rendered
   - UI Components: Custom Web Components library built with TypeScript.
 - Backend: Elysia – Lightweight and fast Bun-native web framework.
 - Runtime: Bun – Ultra-fast JavaScript runtime, package manager, and bundler.

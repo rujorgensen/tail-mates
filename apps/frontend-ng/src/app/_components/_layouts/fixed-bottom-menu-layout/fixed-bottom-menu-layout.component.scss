@@ -1,0 +1,22 @@
+:host {
+    height: 100%;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "main"
+        "menu";
+
+    main {
+        grid-area: main;
+    }
+
+    menu {
+        grid-area: menu;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+}

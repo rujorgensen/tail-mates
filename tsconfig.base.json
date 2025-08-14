@@ -28,6 +28,9 @@
 			],
 			"@tail-mates/web-components": [
 				"libs/frontend/web-components/src/index.ts"
+			],
+			"@tail-mates/web-components/draggable-drawer": [
+				"libs/frontend/web-components/src/layout/index.ts"
 			]
 		}
 	},

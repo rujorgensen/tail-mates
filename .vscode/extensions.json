@@ -1,7 +1,9 @@
 {
 	"recommendations": [
-		"astro-build.astro-vscode",
-		"biomejs.biome"
+		"biomejs.biome",
+		"ms-playwright.playwright",
+		"prisma.prisma",
+		"angular.ng-template"
 	],
 	"unwantedRecommendations": [
 		"esbenp.prettier-vscode"
