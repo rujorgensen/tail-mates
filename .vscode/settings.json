@@ -1,3 +1,9 @@
 {
-    "nxConsole.generateAiAgentRules": true
+	"nxConsole.generateAiAgentRules": true,
+	"html.format.wrapAttributes": "force-expand-multiline",
+	"[html]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": false,
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
 }

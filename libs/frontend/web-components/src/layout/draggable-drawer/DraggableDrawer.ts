@@ -4,9 +4,7 @@ import {
 	html,
 	LitElement,
 } from 'lit';
-import { state, customElement, property } from 'lit/decorators.js';
-
-// customElement,
+import { customElement, property } from 'lit/decorators.js';
 import { SlideY } from './slide';
 
 export interface ButtonProps {
@@ -25,20 +23,18 @@ export class DraggableDrawer extends LitElement {
 	@property({
 		type: String,
 	})
-	private readonly color?: string;
+	accessor color: string | undefined = undefined;
 
-	@state()
-	private state: 'closed' | 'dragged' | 'open' = 'closed';
+	@property()
+	accessor state: 'closed' | 'dragged' | 'open' = 'closed';
 
-	@state()
-	private dragPixels: number = 0;
+	@property()
+	accessor dragPixels: number = 0;
 
-	@state()
-	private restingPixels: number = 0;
+	@property()
+	accessor restingPixels: number = 0;
 
-	private slideY: SlideY | undefined;
-
-	static readonly styles = css`
+	static override readonly styles = css`
 	#container { 
 		height: 100%;
 		display: grid;
@@ -71,15 +67,15 @@ export class DraggableDrawer extends LitElement {
     }
 
     aside[state="open"] > section {
-      height: var(--resting-pixels);
+		height: var(--resting-pixels);
     }
     
     aside[state="dragged"] > section {
-      height: calc(var(--dragged-pixels) + var(--resting-pixels));
+      	height: calc(var(--dragged-pixels) + var(--resting-pixels));
     }
       
     aside[state="closed"] > section {
-      height: var(--resting-pixels);
+      	height: var(--resting-pixels);
     }
 
     #drag-handle {
@@ -117,7 +113,7 @@ export class DraggableDrawer extends LitElement {
 	/**
 	 * @returns { void }
 	 */
-	protected firstUpdated(
+	protected override firstUpdated(
 
 	): void {
 		const dragHandle: HTMLElement | null = this.renderRoot.querySelector('#drag-handle');
@@ -141,7 +137,7 @@ export class DraggableDrawer extends LitElement {
 		this.restingPixels = 0;
 		aside.style.setProperty('--resting-pixels', `${this.restingPixels}px`);
 
-		this.slideY = new SlideY(dragHandle, container, {
+		new SlideY(dragHandle, container, {
 			dragged: (dragPixels: number) => {
 				this.state = 'dragged';
 				this.dragPixels = Math.min(availableSpace, dragPixels);
@@ -151,7 +147,7 @@ export class DraggableDrawer extends LitElement {
 			},
 
 			released: (inertia: number) => {
-				console.log('inertia', inertia);
+				console.log('Inertia', inertia);
 				const position = this.dragPixels + this.restingPixels;
 
 				// This svipe had high inertia
@@ -207,7 +203,7 @@ export class DraggableDrawer extends LitElement {
 		});
 	}
 
-	protected render(
+	protected override render(
 
 	): TemplateResult<1> {
 		// Drag here <b>${this.state}</b> ${this.dragPixels}px ${this.inertia} px/ms

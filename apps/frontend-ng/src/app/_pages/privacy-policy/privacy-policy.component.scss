@@ -1,0 +1,29 @@
+:host {
+  display: block;
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem;
+		font-family: system-ui, sans-serif;
+		line-height: 1.6;
+	}
+	
+	h1 {
+		color: #333;
+		border-bottom: 2px solid #ddd;
+		padding-bottom: 0.5rem;
+	}
+	
+	h2 {
+		color: #555;
+		margin-top: 2rem;
+	}
+	
+	ul {
+		margin-left: 1rem;
+	}
+	
+	li {
+		margin-bottom: 0.5rem;
+	}
+}

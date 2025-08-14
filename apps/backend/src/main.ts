@@ -1,5 +1,6 @@
 import { auth } from '@backend/auth';
 import { type Context, Elysia } from 'elysia';
+import { cors } from '@elysiajs/cors';
 
 // User middleware (compute user and session and pass to routes)
 const betterAuth = new Elysia({
@@ -16,6 +17,8 @@ const betterAuth = new Elysia({
 		}
 
 		context.status(405);
+
+		return undefined;
 	})
 
 	.macro({
@@ -39,9 +42,20 @@ const betterAuth = new Elysia({
 
 const app = new Elysia()
 	.use(betterAuth)
+
+	.use(cors(Bun.env.NODE_ENV === 'production' ? undefined : {
+		origin: 'localhost:3101',
+		methods: [
+			'GET',
+			'POST',
+		],
+	}))
+
 	.get('/', () => 'Hello Elysia')
 	.listen(3100);
 
 console.log(
 	`🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`,
 );
+
+export type TApp = typeof app;

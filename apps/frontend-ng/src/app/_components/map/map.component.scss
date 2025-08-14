@@ -1,0 +1,12 @@
+:host {
+    .map-container {
+        height: 100%;
+        /* fallback background */
+        background-color: #f0f0f0;
+    }
+
+    /* Override any potential parent margins/padding */
+    .map-container * {
+        box-sizing: border-box;
+    }
+}

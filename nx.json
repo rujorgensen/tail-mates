@@ -24,6 +24,29 @@
 				"{projectRoot}/prisma"
 			],
 			"cache": true
+		},
+		"@angular-devkit/build-angular:browser": {
+			"cache": true,
+			"dependsOn": [
+				"^build"
+			],
+			"inputs": [
+				"default",
+				"^default"
+			]
+		},
+		"server": {
+			"cache": true
+		},
+		"@angular/build:application": {
+			"cache": true,
+			"dependsOn": [
+				"^build"
+			],
+			"inputs": [
+				"default",
+				"^default"
+			]
 		}
 	},
 	"plugins": [
@@ -49,7 +72,37 @@
 				"buildDepsTargetName": "build-deps",
 				"watchDepsTargetName": "watch-deps"
 			}
+		},
+		{
+			"plugin": "@nx/angular/plugin",
+			"options": {
+				"targetNamePrefix": ""
+			}
+		},
+		{
+			"plugin": "@nx/playwright/plugin",
+			"options": {
+				"targetName": "e2e"
+			}
+		},
+		{
+			"plugin": "@nx/rspack/plugin",
+			"options": {
+				"buildTargetName": "build",
+				"serveTargetName": "serve",
+				"previewTargetName": "preview",
+				"buildDepsTargetName": "build-deps",
+				"watchDepsTargetName": "watch-deps"
+			}
 		}
 	],
-	"nxCloudId": "684edb35c2aab92066a3ea5b"
+	"nxCloudId": "684edb35c2aab92066a3ea5b",
+	"generators": {
+		"@nx/angular:application": {
+			"e2eTestRunner": "playwright",
+			"linter": "none",
+			"style": "scss",
+			"unitTestRunner": "vitest"
+		}
+	}
 }
