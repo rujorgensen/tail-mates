@@ -13,6 +13,19 @@
 			"!dist"
 		]
 	},
+	"json": {
+		"formatter": {
+			"enabled": true,
+			"indentStyle": "tab",
+			"indentWidth": 2
+		},
+		"linter": {
+			"enabled": true
+		},
+		"assist": {
+			"enabled": false
+		}
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -22,12 +35,44 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"style": {
+				"noRestrictedImports": {
+					"level": "warn",
+					"options": {
+						"patterns": [
+							{
+								"group": [
+									"import-foo/*",
+									"!import-foo/baz"
+								],
+								"message": "import-foo is deprecated, except for modules in import-foo/baz."
+							},
+							{
+								"group": [
+									"import-foo/*"
+								],
+								"importNamePattern": "[xyz]"
+							},
+							{
+								"group": [
+									"import-foo/*"
+								],
+								"importNamePattern": "[xyz]",
+								"invertImportNamePattern": true
+							}
+						]
+					}
+				}
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single"
+		},
+		"linter": {
+			"enabled": true
 		}
 	},
 	"assist": {
@@ -37,29 +82,5 @@
 				"organizeImports": "on"
 			}
 		}
-	},
-	"options": {
-		"patterns": [
-			{
-				"group": [
-					"import-foo/*",
-					"!import-foo/baz"
-				],
-				"message": "import-foo is deprecated, except for modules in import-foo/baz."
-			},
-			{
-				"group": [
-					"import-foo/*"
-				],
-				"importNamePattern": "[xyz]"
-			},
-			{
-				"group": [
-					"import-foo/*"
-				],
-				"importNamePattern": "[xyz]",
-				"invertImportNamePattern": true
-			}
-		]
 	}
 }
