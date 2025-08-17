@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -13,6 +13,19 @@
 			"!dist"
 		]
 	},
+	"json": {
+		"formatter": {
+			"enabled": true,
+			"indentStyle": "tab",
+			"indentWidth": 2
+		},
+		"linter": {
+			"enabled": true
+		},
+		"assist": {
+			"enabled": false
+		}
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -22,12 +35,44 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"style": {
+				"noRestrictedImports": {
+					"level": "warn",
+					"options": {
+						"patterns": [
+							{
+								"group": [
+									"import-foo/*",
+									"!import-foo/baz"
+								],
+								"message": "import-foo is deprecated, except for modules in import-foo/baz."
+							},
+							{
+								"group": [
+									"import-foo/*"
+								],
+								"importNamePattern": "[xyz]"
+							},
+							{
+								"group": [
+									"import-foo/*"
+								],
+								"importNamePattern": "[xyz]",
+								"invertImportNamePattern": true
+							}
+						]
+					}
+				}
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single"
+		},
+		"linter": {
+			"enabled": true
 		}
 	},
 	"assist": {

@@ -7,7 +7,7 @@ describe('FixedBottomMenuLayoutComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ FixedBottomMenuLayoutComponent ]
+      imports: [ FixedBottomMenuLayoutComponent ]
     })
     .compileComponents();
 

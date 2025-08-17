@@ -26,7 +26,7 @@ const facebookClientSecret: string = process.env['FACEBOOK_CLIENT_SECRET'];
 const prisma = new PrismaClient();
 
 /**
- * If changing this configuration, make sure to run `bun auth:generate` to apply the changes.
+ * ! If changing this configuration, make sure to run `bun auth:generate` to apply the changes.
  */
 export const auth = betterAuth({
 	database: prismaAdapter(prisma, {

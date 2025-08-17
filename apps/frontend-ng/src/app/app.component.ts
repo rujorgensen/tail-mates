@@ -10,7 +10,7 @@ const version = packageJson.version;
     RouterModule,
   ],
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: '<h1>Welcome tailmates</h1><router-outlet></router-outlet>',
 })
 export class AppComponent {
 

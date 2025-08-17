@@ -3,7 +3,8 @@
 		"biomejs.biome",
 		"ms-playwright.playwright",
 		"prisma.prisma",
-		"angular.ng-template"
+		"angular.ng-template",
+		"aaron-bond.better-comments"
 	],
 	"unwantedRecommendations": [
 		"esbenp.prettier-vscode"
