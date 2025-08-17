@@ -8,7 +8,7 @@ describe('DraggableDrawerComponent', () => {
 
 	beforeEach(async () => {
 		TestBed.configureTestingModule({
-			declarations: [
+			imports: [
 				DraggableDrawerComponent,
 			],
 		}).compileComponents();
