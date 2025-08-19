@@ -3,7 +3,7 @@
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"projectType": "application",
 	"prefix": "app",
-	"sourceRoot": "apps/frontend-ng/src",
+	"sourceRoot": "apps/frontend/src",
 	"tags": [
 		"type:application",
 		"scope:frontend"
@@ -15,25 +15,25 @@
 				"{options.outputPath}"
 			],
 			"options": {
-				"outputPath": "dist/apps/frontend-ng",
-				"browser": "apps/frontend-ng/src/main.ts",
+				"outputPath": "dist/apps/frontend",
+				"browser": "apps/frontend/src/main.ts",
 				"polyfills": [
 					"zone.js"
 				],
-				"tsConfig": "apps/frontend-ng/tsconfig.app.json",
+				"tsConfig": "apps/frontend/tsconfig.app.json",
 				"inlineStyleLanguage": "scss",
 				"assets": [
 					{
 						"glob": "**/*",
-						"input": "apps/frontend-ng/public"
+						"input": "apps/frontend/public"
 					}
 				],
 				"styles": [
-					"apps/frontend-ng/src/styles.scss"
+					"apps/frontend/src/styles.scss"
 				],
-				"server": "apps/frontend-ng/src/main.server.ts",
+				"server": "apps/frontend/src/main.server.ts",
 				"ssr": {
-					"entry": "apps/frontend-ng/src/server.ts"
+					"entry": "apps/frontend/src/server.ts"
 				},
 				"outputMode": "server"
 			},
@@ -66,7 +66,7 @@
 			"executor": "@angular/build:dev-server",
 			"options": {
 				"port": 3101,
-			    "proxyConfig": "apps/frontend-ng/proxy.conf.json"
+			    "proxyConfig": "apps/frontend/proxy.conf.json"
 			},
 			"configurations": {
 				"production": {
@@ -90,7 +90,7 @@
 			"options": {
 				"buildTarget": "frontend-tailmates:build",
 				"port": 3101,
-				"staticFilePath": "dist/apps/frontend-ng/browser",
+				"staticFilePath": "dist/apps/frontend/browser",
 				"spa": true
 			}
 		}

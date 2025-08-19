@@ -6,7 +6,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/frontend-ng',
+  cacheDir: '../../node_modules/.vite/apps/frontend',
   plugins: [
     angular(),
     nxViteTsPaths(),
@@ -25,7 +25,7 @@ export default defineConfig(() => ({
     setupFiles: ['src/test-setup.ts'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/apps/frontend-ng',
+      reportsDirectory: '../../coverage/apps/frontend',
       provider: 'v8' as const,
     },
   },
