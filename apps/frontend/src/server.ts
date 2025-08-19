@@ -16,39 +16,41 @@ const app: Elysia = new Elysia();
 const angularApp: AngularAppEngine = new AngularAppEngine();
 
 app
-  // Serve static files from the /browser dist folder
-  // ! NB During development, the output is not there and this will fail
- //  .use(staticPlugin({
- //    prefix: '',
- //    assets: browserDistFolder,
- //    alwaysStatic: true,
- //    headers: {
- //      maxAge: '1y',
- //      // index: false,
- //      // redirect: false,
- //    },
- //  }))
+	// Serve static files from the /browser dist folder
+	// ! NB During development, the output is not there and this will fail
+	.use(
+		staticPlugin({
+			prefix: '',
+			assets: browserDistFolder,
+			alwaysStatic: true,
+			headers: {
+				maxAge: '1y',
+				// index: false,
+				// redirect: false,
+			},
+		}),
+	)
 
-  // Catch-all route that proxies to Angular SSR
-  .all('/*', async ({ request }) => {
-    // const res = await reqHandler(request);
-    // return res ?? new Response('Not found', { status: 404 });
+	// Catch-all route that proxies to Angular SSR
+	.all('/*', async ({ request }) => {
+		// const res = await reqHandler(request);
+		// return res ?? new Response('Not found', { status: 404 });
 
-
-    return angularApp
-      .handle(request, { server: 'elysia' });
-  });
+		return angularApp.handle(request, {
+			server: 'elysia',
+		});
+	});
 
 /**
  * Start the server if this module is the main entry point.
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url)) {
-  const port = process.env['PORT'] || 4000;
+	const port = process.env['PORT'] || 4000;
 
-  app.listen(port, ({ url }) => {
-    console.log(`🚀🦊 Elysia SSR server running on ${url.href}`);
-  });
+	app.listen(port, ({ url }) => {
+		console.log(`🚀🦊 Elysia SSR server running on ${url.href}`);
+	});
 }
 
 /**

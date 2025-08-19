@@ -45,4 +45,4 @@ RUN addgroup -S app_group && adduser -S bun_user -G app_group
 USER bun_user
 EXPOSE 3021
 
-ENTRYPOINT [ "bun", "run", "./sb-server.ts"]
+ENTRYPOINT [ "bun", "run", "./storybook-server.ts"]
