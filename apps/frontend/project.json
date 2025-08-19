@@ -66,7 +66,7 @@
 			"executor": "@angular/build:dev-server",
 			"options": {
 				"port": 3101,
-			    "proxyConfig": "apps/frontend/proxy.conf.json"
+				"proxyConfig": "apps/frontend/proxy.conf.json"
 			},
 			"configurations": {
 				"production": {
@@ -93,6 +93,9 @@
 				"staticFilePath": "dist/apps/frontend/browser",
 				"spa": true
 			}
+		},
+		"docker-build": {
+			"command": "docker build -f apps/frontend/Dockerfile . -t tail-mates-frontend"
 		}
 	}
 }
