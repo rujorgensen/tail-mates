@@ -25,8 +25,7 @@ FROM base AS build
 COPY --from=install ./src/node_modules node_modules
 COPY . .
 
-WORKDIR /src/apps/frontend
-RUN bunx --bun astro build
+RUN bunx nx run frontend-tailmates:build:production
 
 # ******************************************************************************
 # *** DEPLOY STAGE
@@ -53,4 +52,4 @@ RUN addgroup -S app_group && adduser -S bun_user -G app_group
 USER bun_user
 EXPOSE 3101
 
-ENTRYPOINT [ "bun", "run", "./dist/apps/frontend/server/entry.mjs"]
+ENTRYPOINT [ "bun", "run", "./dist/apps/frontend/server/server.mjs"]
