@@ -20,5 +20,8 @@ await Bun.build({
 	outdir: `./dist/${values.projectRoot}`,
 	target: 'bun', // Use 'bun' as the target for Bun's native build
 	minify: true,
+	external: [
+		'discord.js',
+	],
 	// sourcemap: 'linked', // default 'none'
 });
