@@ -48,6 +48,7 @@ COPY --from=install ./src/node_modules/@prisma  ./node_modules/@prisma
 # Include Discordjs
 COPY --from=install ./src/node_modules/discord.js  ./node_modules/discord.js
 COPY --from=install ./src/node_modules/@discordjs  ./node_modules/@discordjs
+COPY --from=install ./src/node_modules/discord-api-types  ./node_modules/discord-api-types
 COPY --from=install ./src/node_modules/tslib  ./node_modules/tslib
 
 # Run the app as bun_user
