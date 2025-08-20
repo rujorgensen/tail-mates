@@ -51,6 +51,7 @@ COPY --from=install ./src/node_modules/@discordjs  ./node_modules/@discordjs
 COPY --from=install ./src/node_modules/discord-api-types  ./node_modules/discord-api-types
 COPY --from=install ./src/node_modules/@sapphire  ./node_modules/@sapphire
 COPY --from=install ./src/node_modules/@vladfrangu  ./node_modules/@vladfrangu
+COPY --from=install ./src/node_modules/magic-bytes.js  ./node_modules/magic-bytes.js
 COPY --from=install ./src/node_modules/tslib  ./node_modules/tslib
 
 # Run the app as bun_user
