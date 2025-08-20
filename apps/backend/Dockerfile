@@ -52,7 +52,11 @@ COPY --from=install ./src/node_modules/discord-api-types  ./node_modules/discord
 COPY --from=install ./src/node_modules/@sapphire  ./node_modules/@sapphire
 COPY --from=install ./src/node_modules/@vladfrangu  ./node_modules/@vladfrangu
 COPY --from=install ./src/node_modules/magic-bytes.js  ./node_modules/magic-bytes.js
+COPY --from=install ./src/node_modules/lodash.snakecase  ./node_modules/lodash.snakecase
+COPY --from=install ./src/node_modules/lodash  ./node_modules/lodash
 COPY --from=install ./src/node_modules/tslib  ./node_modules/tslib
+COPY --from=install ./src/node_modules/fast-deep-equal  ./node_modules/fast-deep-equal
+COPY --from=install ./src/node_modules/ts-mixer  ./node_modules/ts-mixer
 
 # Run the app as bun_user
 RUN addgroup -S app_group && adduser -S bun_user -G app_group
