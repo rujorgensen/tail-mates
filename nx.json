@@ -1,119 +1,75 @@
 {
-	"$schema": "./node_modules/nx/schemas/nx-schema.json",
-	"targetDefaults": {
-		"web-components:build": {
-			"outputs": [
-				"{projectRoot}/dist"
-			],
-			"cache": true
-		},
-		"build": {
-			"outputs": [
-				"{projectRoot}/dist"
-			],
-			"cache": true
-		},
-		"storybook-build": {
-			"outputs": [
-				"{projectRoot}/dist"
-			],
-			"cache": true
-		},
-		"auth:generate": {
-			"outputs": [
-				"{projectRoot}/prisma"
-			],
-			"cache": true
-		},
-		"@angular-devkit/build-angular:browser": {
-			"cache": true,
-			"dependsOn": [
-				"^build"
-			],
-			"inputs": [
-				"default",
-				"^default"
-			]
-		},
-		"server": {
-			"cache": true
-		},
-		"@angular/build:application": {
-			"cache": true,
-			"dependsOn": [
-				"^build"
-			],
-			"inputs": [
-				"default",
-				"^default"
-			]
-		}
-	},
-	"plugins": [
-		{
-			"plugin": "@nx/storybook/plugin",
-			"options": {
-				"serveStorybookTargetName": "storybook",
-				"buildStorybookTargetName": "build-storybook",
-				"testStorybookTargetName": "test-storybook",
-				"staticStorybookTargetName": "static-storybook"
-			}
-		},
-		{
-			"plugin": "@nx/vite/plugin",
-			"options": {
-				"buildTargetName": "build",
-				"testTargetName": "test",
-				"serveTargetName": "serve",
-				"devTargetName": "dev",
-				"previewTargetName": "preview",
-				"serveStaticTargetName": "serve-static",
-				"typecheckTargetName": "typecheck",
-				"buildDepsTargetName": "build-deps",
-				"watchDepsTargetName": "watch-deps"
-			}
-		},
-		{
-			"plugin": "@nx/angular/plugin",
-			"options": {
-				"targetNamePrefix": ""
-			}
-		},
-		{
-			"plugin": "@nx/playwright/plugin",
-			"options": {
-				"targetName": "e2e"
-			}
-		},
-		{
-			"plugin": "@nx/rspack/plugin",
-			"options": {
-				"buildTargetName": "build",
-				"serveTargetName": "serve",
-				"previewTargetName": "preview",
-				"buildDepsTargetName": "build-deps",
-				"watchDepsTargetName": "watch-deps"
-			}
-		}
-	],
-	"TEMP_IGNORE_nxCloudId_TEMP_IGNORE": "684edb35c2aab92066a3ea5b",
-	"generators": {
-		"@nx/angular:application": {
-			"e2eTestRunner": "playwright",
-			"linter": "none",
-			"style": "scss",
-			"unitTestRunner": "vitest"
-		}
-	},
-	"namedInputs": {
-		"sharedGlobals": [
-			"{workspaceRoot}/.github/workflows/main.yml"
-		],
-		"default": [
-			"sharedGlobals"
-		]
-	},
-	"tui": {
-		"enabled": false
-	}
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "web-components:build": {
+      "outputs": ["{projectRoot}/dist"],
+      "cache": true
+    },
+    "build": { "outputs": ["{projectRoot}/dist"], "cache": true },
+    "storybook-build": { "outputs": ["{projectRoot}/dist"], "cache": true },
+    "auth:generate": { "outputs": ["{projectRoot}/prisma"], "cache": true },
+    "@angular-devkit/build-angular:browser": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"]
+    },
+    "server": { "cache": true },
+    "@angular/build:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"]
+    }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/storybook/plugin",
+      "options": {
+        "serveStorybookTargetName": "storybook",
+        "buildStorybookTargetName": "build-storybook",
+        "testStorybookTargetName": "test-storybook",
+        "staticStorybookTargetName": "static-storybook"
+      }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    { "plugin": "@nx/angular/plugin", "options": { "targetNamePrefix": "" } },
+    { "plugin": "@nx/playwright/plugin", "options": { "targetName": "e2e" } },
+    {
+      "plugin": "@nx/rspack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    }
+  ],
+  "TEMP_IGNORE_nxCloudId_TEMP_IGNORE": "684edb35c2aab92066a3ea5b",
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "playwright",
+      "linter": "none",
+      "style": "scss",
+      "unitTestRunner": "vitest"
+    }
+  },
+  "namedInputs": {
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/main.yml"],
+    "default": ["sharedGlobals"]
+  },
+  "tui": { "enabled": false },
+  "nxCloudId": "68a751f100c0f7719fc34249"
 }
