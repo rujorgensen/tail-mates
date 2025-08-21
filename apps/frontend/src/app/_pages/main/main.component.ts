@@ -7,7 +7,7 @@ import {
 	type UserSession,
 	UserSessionService,
 } from '../../_services/user-session.service';
-import { Observable } from 'rxjs';
+import type { Observable } from 'rxjs';
 
 @Component({
 	templateUrl: './main.component.html',
@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent {
-	protected user$$: Observable<UserSession>;
+	protected user$$: Observable<UserSession | null>;
 
 	constructor(private readonly _userSessionService: UserSessionService) {
 		this.user$$ = this._userSessionService.session$$;
