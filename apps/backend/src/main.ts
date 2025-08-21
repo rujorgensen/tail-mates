@@ -1,6 +1,9 @@
 import { auth } from '@backend/auth';
 import { type Context, Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
+import packageJson from '../../../package.json';
+
+const version = packageJson.version;
 
 // User middleware (compute user and session and pass to routes)
 const betterAuth = new Elysia({
@@ -55,7 +58,7 @@ const app = new Elysia()
 	.listen(3100);
 
 console.log(
-	`🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`,
+	`🦊 Elysia API server (${version}) running at http://${app.server?.hostname}:${app.server?.port}`,
 );
 
 export type TApp = typeof app;
