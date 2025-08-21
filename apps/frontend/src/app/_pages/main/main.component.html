@@ -1,10 +1,16 @@
 <app-fixed-bottom-menu-layout title="Map - Tail Mates">
-    <app-draggable-drawer body color="white">
-        <div body style="height: 100%;">
+    <app-draggable-drawer
+        body
+        color="white"
+    >
+        <div
+            body
+            style="height: 100%;"
+        >
             <app-map />
         </div>
         <div drawer>
-          THE USER:.::  {{ (user$$ | async)?.user | json }}
+            THE USER:.:: {{ (user$$ | async) | json }}
         </div>
     </app-draggable-drawer>
     <li buttons><button>Save</button></li>
