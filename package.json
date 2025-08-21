@@ -1,7 +1,7 @@
 {
 	"name": "tail-mates",
 	"type": "module",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"scripts": {
 		"upd": "bun upgrade && ncu -i --format group",
 		"bupd": "bun update --interactive --save",

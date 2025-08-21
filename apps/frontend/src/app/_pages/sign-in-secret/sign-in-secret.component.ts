@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// Import the auth client and set up authentication
 import { authClient } from '../../auth/auth-client';
 import { UserSessionService } from '../../_services/user-session.service';
 import { Router } from '@angular/router';
+import { isDevMode } from '@angular/core';
 
 @Component({
 	templateUrl: './sign-in-secret.component.html',
@@ -16,7 +16,6 @@ import { Router } from '@angular/router';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInSecretComponent {
-	
 	constructor(
 		private readonly _userSessionService: UserSessionService,
 		private readonly _router: Router,
@@ -28,10 +27,7 @@ export class SignInSecretComponent {
 			{
 				provider: 'google',
 				// The URL to redirect to after sign-in
-				callbackURL: 'http://localhost:3101/',
-				// callbackURL: import.meta.env.PROD
-				//   ? "/"
-				//   : "http://localhost:3101/",
+				callbackURL: isDevMode() ? 'http://localhost:3101/' : '/',
 			},
 			{
 				onSuccess: () => {
