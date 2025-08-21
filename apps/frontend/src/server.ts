@@ -8,7 +8,9 @@ import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
 import { Elysia } from 'elysia';
 import { staticPlugin } from '@elysiajs/static';
 import { isMainModule } from '@angular/ssr/node';
+import packageJson from '../../../package.json';
 
+const version = packageJson.version;
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
@@ -49,7 +51,7 @@ if (isMainModule(import.meta.url)) {
 	const port = process.env['PORT'] || 4000;
 
 	app.listen(port, ({ url }) => {
-		console.log(`🚀🦊 Elysia SSR server running on ${url.href}`);
+		console.log(`🚀🦊 Elysia SSR server (${version}) running on ${url.href}`);
 	});
 }
 
