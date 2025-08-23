@@ -72,7 +72,7 @@
     "@angular/compiler-cli": "~20.2.1",
     "@angular/language-service": "~20.2.1",
     "@angular/localize": "^20.2.1",
-    "@biomejs/biome": "2.2.0",
+    "@biomejs/biome": "2.2.2",
     "@chromatic-com/storybook": "^4",
     "@nx/angular": "21.4.1",
     "@nx/devkit": "21.4.1",
