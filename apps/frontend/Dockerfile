@@ -22,10 +22,17 @@ RUN bun install --frozen-lockfile
 # Copy node_modules from temp directory then copy all (non-ignored) project files into the image
 FROM base AS build
 
+# Helpful for Nx in CI DEBUGGING!!!
+ENV CI=1 \
+    NX_DAEMON=false \
+    NX_SKIP_NX_CACHE=true \
+    NX_VERBOSE_LOGGING=true \
+    NX_CLOUD=false
+
 COPY --from=install ./src/node_modules node_modules
 COPY . .
 
-RUN bunx nx run frontend-tailmates:build:production
+RUN bunx nx run frontend-tail-mates:build:production
 
 # ******************************************************************************
 # *** DEPLOY STAGE
@@ -38,11 +45,6 @@ ENV HOST=0.0.0.0
 ENV PORT=3101
 
 # Can be used for debugging: RUN apk add --no-cache curl
-
-# "COPY --from=install ./src/node_modules node_modules"
-# Fixes error: Cannot find module 'kleur/colors' from '/src/dist/apps/frontend/server/manifest_DmhAtobi.mjs'
-# Bun v1.2.16 (Linux x64 baseline)
-COPY --from=install ./src/node_modules node_modules
 
 COPY --from=build ./src/dist ./dist
 COPY --from=install ./src/node_modules/@prisma-types  ./node_modules/@prisma-types
