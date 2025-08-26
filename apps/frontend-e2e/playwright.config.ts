@@ -26,7 +26,7 @@ export default defineConfig({
 	},
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: 'bun nx run frontend-tailmates:serve',
+		command: 'bun nx run frontend-tail-mates:serve',
 		url: 'http://localhost:3101',
 		reuseExistingServer: true,
 		cwd: workspaceRoot,

@@ -1,5 +1,5 @@
 {
-	"name": "frontend-tailmates",
+	"name": "frontend-tail-mates",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"projectType": "application",
 	"prefix": "app",
@@ -70,10 +70,10 @@
 			},
 			"configurations": {
 				"production": {
-					"buildTarget": "frontend-tailmates:build:production"
+					"buildTarget": "frontend-tail-mates:build:production"
 				},
 				"development": {
-					"buildTarget": "frontend-tailmates:build:development"
+					"buildTarget": "frontend-tail-mates:build:development"
 				}
 			},
 			"defaultConfiguration": "development"
@@ -81,14 +81,14 @@
 		"extract-i18n": {
 			"executor": "@angular/build:extract-i18n",
 			"options": {
-				"buildTarget": "frontend-tailmates:build"
+				"buildTarget": "frontend-tail-mates:build"
 			}
 		},
 		"serve-static": {
 			"continuous": true,
 			"executor": "@nx/web:file-server",
 			"options": {
-				"buildTarget": "frontend-tailmates:build",
+				"buildTarget": "frontend-tail-mates:build",
 				"port": 3101,
 				"staticFilePath": "dist/apps/frontend/browser",
 				"spa": true

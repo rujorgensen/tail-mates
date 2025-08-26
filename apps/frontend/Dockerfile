@@ -25,7 +25,7 @@ FROM base AS build
 COPY --from=install ./src/node_modules node_modules
 COPY . .
 
-RUN bunx nx run frontend-tailmates:build:production
+RUN bunx nx run frontend-tail-mates:build:production
 
 # ******************************************************************************
 # *** DEPLOY STAGE
