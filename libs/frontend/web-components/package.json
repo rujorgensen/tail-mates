@@ -23,6 +23,5 @@
 		"web-components",
 		"typescript",
 		"custom-elements"
-	],
-	"packageManager": "bun@1.2.20"
+	]
 }

@@ -1,15 +1,13 @@
 import '@tail-mates/web-components';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
+	ChangeDetectionStrategy,
+	Component,
+	CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 
 @Component({
-  selector: 'app-draggable-drawer',
-  imports: [
-  ],
-  template: `
+	selector: 'app-draggable-drawer',
+	template: `
   @defer(on viewport){
     <draggable-drawer color="white" style="height: 100%; background-color: yellow;">
       <div slot="body" style="height: 100%;">
@@ -23,16 +21,16 @@ import {
     <div>...</div>
   }
     `,
-  styles: `
+	styles: `
   :host{
     display: block;
     height: 100%;
   }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  schemas: [
-    // ! For custom elements
-    CUSTOM_ELEMENTS_SCHEMA,
-  ],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	schemas: [
+		// ! For custom elements
+		CUSTOM_ELEMENTS_SCHEMA,
+	],
 })
 export class DraggableDrawerComponent {}
