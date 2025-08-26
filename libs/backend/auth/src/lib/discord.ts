@@ -1,6 +1,6 @@
 import { WebhookClient } from 'discord.js';
 
-if(!process.env['DISCORD_TAIL_MATES_WEBHOOK_URL']){
+if (!process.env['DISCORD_TAIL_MATES_WEBHOOK_URL']) {
 	throw new Error('Missing DISCORD_TAIL_MATES_WEBHOOK_URL');
 }
 

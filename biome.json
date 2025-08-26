@@ -15,9 +15,7 @@
 	},
 	"json": {
 		"formatter": {
-			"enabled": true,
-			"indentStyle": "tab",
-			"indentWidth": 2
+			"enabled": true
 		},
 		"linter": {
 			"enabled": true

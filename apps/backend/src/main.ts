@@ -46,13 +46,19 @@ const betterAuth = new Elysia({
 const app = new Elysia()
 	.use(betterAuth)
 
-	.use(cors(Bun.env.NODE_ENV === 'production' ? undefined : {
-		origin: 'localhost:3101',
-		methods: [
-			'GET',
-			'POST',
-		],
-	}))
+	.use(
+		cors(
+			Bun.env.NODE_ENV === 'production'
+				? undefined
+				: {
+						origin: 'localhost:3101',
+						methods: [
+							'GET',
+							'POST',
+						],
+					},
+		),
+	)
 
 	.get('/', () => 'Hello Elysia')
 	.listen(3100);
