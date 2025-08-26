@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, Observable, tap } from 'rxjs';
+import { BehaviorSubject, filter, type Observable, tap } from 'rxjs';
 import { authClient } from '../auth/auth-client';
 
 export type UserSession = typeof authClient.$Infer.Session.user;
