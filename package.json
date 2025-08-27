@@ -77,7 +77,7 @@
 		"@chromatic-com/storybook": "^4",
 		"@nx/angular": "21.4.1",
 		"@nx/devkit": "21.4.1",
-		"@nx/js": "21.4.1",
+		"@nx/js": "21.5.0",
 		"@nx/playwright": "21.4.1",
 		"@nx/storybook": "21.4.1",
 		"@nx/vite": "21.4.1",
