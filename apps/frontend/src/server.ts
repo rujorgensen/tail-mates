@@ -39,9 +39,24 @@ app
 		// return res ?? new Response('Not found', { status: 404 });
 
 		return angularApp.handle(request, {
-			server: 'elysia',
+			'x-server': 'elysia', // 'server' may be overridden by the proxy
 		});
 	});
+
+// * Log the requests
+app
+	.state('requestStart', Date.now())
+
+	.onRequest(({ request }) => {
+		console.log(`➡️  ${request.method} ${request.url}`);
+	})
+
+	.onAfterHandle(({ store, set, request }) => {
+		const ms = Date.now() - store.requestStart;
+
+		console.log(`⬅️  ${request.method} ${request.url} -> ${set.status} (${ms}ms)`);
+	})
+	;
 
 /**
  * Start the server if this module is the main entry point.
@@ -51,6 +66,7 @@ if (isMainModule(import.meta.url)) {
 	const port = process.env['PORT'] || 4000;
 
 	app.listen(port, ({ url }) => {
+		console.info(`ℹ️ Serving static assets from '${browserDistFolder}'`);
 		console.log(`🚀🦊 Elysia SSR server (${version}) running on ${url.href}`);
 	});
 }
