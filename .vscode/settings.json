@@ -5,5 +5,5 @@
 		"editor.formatOnSave": true,
 		"editor.formatOnPaste": false,
 		"editor.defaultFormatter": "vscode.html-language-features"
-	},
+	}
 }

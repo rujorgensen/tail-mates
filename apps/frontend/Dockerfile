@@ -39,11 +39,6 @@ ENV PORT=3101
 
 # Can be used for debugging: RUN apk add --no-cache curl
 
-# "COPY --from=install ./src/node_modules node_modules"
-# Fixes error: Cannot find module 'kleur/colors' from '/src/dist/apps/frontend/server/manifest_DmhAtobi.mjs'
-# Bun v1.2.16 (Linux x64 baseline)
-COPY --from=install ./src/node_modules node_modules
-
 COPY --from=build ./src/dist ./dist
 COPY --from=install ./src/node_modules/@prisma-types  ./node_modules/@prisma-types
 

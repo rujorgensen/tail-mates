@@ -29,6 +29,9 @@ const prisma = new PrismaClient();
  * ! If changing this configuration, make sure to run `bun auth:generate` to apply the changes.
  */
 export const auth = betterAuth({
+	telemetry: {
+		enabled: false,
+	},
 	database: prismaAdapter(prisma, {
 		provider: 'postgresql',
 	}),
@@ -36,7 +39,7 @@ export const auth = betterAuth({
 		'http://localhost:3101',
 	],
 	emailAndPassword: {
-		enabled: true
+		enabled: true,
 	},
 	databaseHooks: {
 		user: {

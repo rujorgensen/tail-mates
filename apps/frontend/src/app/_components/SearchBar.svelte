@@ -1,5 +1,5 @@
 <script>
-	let query = '';
+let query = '';
 </script>
 
 <style>
