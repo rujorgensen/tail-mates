@@ -14,7 +14,7 @@ FROM base AS install
 COPY package.json bun.lock ./
 COPY prisma ./prisma/
 
-RUN bun install --frozen-lockfile
+RUN bun install --frozen-lockfile --production
 
 # ******************************************************************************
 # *** BUILD STAGE
