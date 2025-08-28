@@ -3,6 +3,10 @@ import { type Context, Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
 import packageJson from '../../../package.json';
 
+if (Bun.env.NODE_ENV !== 'production' && Bun.env.NODE_ENV !== 'development') {
+	throw new Error('NODE_ENV has to be either "production" or "development"');
+}
+
 const version = packageJson.version;
 
 // User middleware (compute user and session and pass to routes)
