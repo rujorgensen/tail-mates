@@ -23,17 +23,10 @@ RUN bun install --frozen-lockfile
 # Copy node_modules from temp directory then copy all (non-ignored) project files into the image
 FROM base AS build
 
-ENV CI=1 \
-    NX_DAEMON=false \
-    NX_SKIP_NX_CACHE=true \
-    NX_CLOUD=false \
-    NX_NON_NATIVE_HASHING=true \
-    NODE_OPTIONS=--max_old_space_size=8192 
-    
 COPY --from=install ./src/node_modules node_modules
 COPY . .
 
-RUN bunx nx run frontend-tail-mates:build:production
+RUN bunx nx run frontend-tail-mates:build:production --verbose
 
 # ******************************************************************************
 # *** DEPLOY STAGE
