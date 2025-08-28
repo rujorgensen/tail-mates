@@ -59,6 +59,7 @@
 		"discord.js": "^14.22.1",
 		"elysia": "latest",
 		"leaflet": "^1.9.4",
+		"onetime": "^7.0.0",
 		"prisma-dbml-generator": "^0.12.0",
 		"rxjs": "~7.8.2",
 		"zone.js": "~0.15.1"
