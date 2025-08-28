@@ -1,0 +1,27 @@
+# Dependencies (will be reinstalled in container)
+node_modules
+.angular
+.nx
+.github
+
+# Build output
+dist
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Env files (keep secrets out)
+.env
+.env.local
+.env.*.local
+
+# Test / coverage
+coverage
+
+# Misc
+*.tgz
+*.zip
+*.tar.gz
