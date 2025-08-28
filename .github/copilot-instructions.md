@@ -5,7 +5,7 @@ This is a TypeScript based repository using Bun and Elysia.
 - **Runtime**: Bun
 - **Backend Frameworks**: Elysia / Bun
 - **Frontend Framework**: Angular
-- **Package Manager and Dependency Management**: Bun / Bun.lockb
+- **Package Manager and Dependency Management**: Bun / Bun.lock
 - **Testing**: Bun
 - **Documentation**: Markdown files in `docs/`
 - **Version Control**: Git
