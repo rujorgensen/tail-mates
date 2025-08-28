@@ -1,7 +1,7 @@
 {
   "name": "tail-mates",
   "type": "module",
-  "version": "0.0.9",
+	"version": "0.0.10",
   "scripts": {
     "upd": "bun upgrade && ncu -i --format group",
     "bupd": "bun update --interactive --save",
@@ -28,6 +28,7 @@
     "//-03b": "// *** Better Auth                                                             ",
     "//-03c": "// ****************************************************************************",
     "auth:generate": "npx @better-auth/cli@latest generate --config=./libs/backend/auth/src/lib/auth.ts",
+		"auth:dev:generate-demo-user": "bun run ./apps/frontend/src/app/auth/generate-demo-user.ts",
     "//-04a": "// ****************************************************************************",
     "//-04b": "// *** Misc                                                                    ",
     "//-04c": "// ****************************************************************************",
