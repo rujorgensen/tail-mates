@@ -14,7 +14,8 @@ FROM base AS install
 COPY package.json bun.lock ./
 COPY prisma ./prisma/
 
-RUN bun install --frozen-lockfile --production
+# Don't use --production as we need nx for the build
+RUN bun install --frozen-lockfile
 
 # ******************************************************************************
 # *** BUILD STAGE
@@ -22,6 +23,13 @@ RUN bun install --frozen-lockfile --production
 # Copy node_modules from temp directory then copy all (non-ignored) project files into the image
 FROM base AS build
 
+ENV CI=1 \
+    NX_DAEMON=false \
+    NX_SKIP_NX_CACHE=true \
+    NX_CLOUD=false \
+    NX_NON_NATIVE_HASHING=true \
+    NODE_OPTIONS=--max_old_space_size=8192 
+    
 COPY --from=install ./src/node_modules node_modules
 COPY . .
 
