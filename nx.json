@@ -115,5 +115,5 @@
 	"tui": {
 		"enabled": false
 	},
-	"IGNORE_nxCloudId_IGNORE": "68a751f100c0f7719fc34249"
+	"nxCloudId": "68a751f100c0f7719fc34249"
 }
