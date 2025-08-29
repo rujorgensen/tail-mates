@@ -85,7 +85,7 @@ export class SignUpComponent {
 			console.error('Sign-up error:', err);
 			this.errorMsg.set(
 				err?.message ??
-					'An error occurred during sign-up. Please try again.',
+				'An error occurred during sign-up. Please try again.',
 			);
 		} finally {
 			this.pending.set(false);

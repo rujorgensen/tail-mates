@@ -38,6 +38,8 @@ app
 		// const res = await reqHandler(request);
 		// return res ?? new Response('Not found', { status: 404 });
 
+		console.log(`ℹ️  ${request.method} ${request.url} will be handled by Angular`);
+
 		return angularApp.handle(request, {
 			'x-server': 'elysia', // 'server' may be overridden by the proxy
 		});
