@@ -1,0 +1,13 @@
+:host {
+    box-sizing: content-box;
+    display: inline-flex;
+    align-items: center;
+
+    .icon {
+        right: 0.5rem;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+    }
+
+}

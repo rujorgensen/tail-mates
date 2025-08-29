@@ -40,9 +40,10 @@ app
 
 		console.log(`ℹ️  ${request.method} ${request.url} will be handled by Angular`);
 
-		return angularApp.handle(request, {
-			'x-server': 'elysia', // 'server' may be overridden by the proxy
-		});
+		return angularApp
+			.handle(request, {
+				'x-server': 'elysia', // 'server' may be overridden by the proxy
+			});
 	});
 
 // * Log the requests
