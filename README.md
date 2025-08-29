@@ -36,6 +36,7 @@ Inside of the project, you'll see the following folders and files:
 │       └── web-components/     # Reusable UI components library
 │
 ├── docs/                       # Documentation
+├── .angular-cli.json           # Only configuration for the "alexiv.vscode-angular2-files"-extension
 └── package.json
 ```
 
