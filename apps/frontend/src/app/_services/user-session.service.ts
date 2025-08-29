@@ -15,7 +15,9 @@ export class UserSessionService {
 
 	private readonly session$$_: BehaviorSubject<UserSession | null | TUninitialized> = new BehaviorSubject<UserSession | null | TUninitialized>(UN_INITIALIZED);
 
-	constructor() {
+	constructor(
+
+	) {
 		this.session$$ = this.session$$_
 			.asObservable()
 			.pipe(
@@ -33,7 +35,9 @@ export class UserSessionService {
 	 *
 	 * @returns { Promise<void> }
 	 */
-	public async refreshUserSession(): Promise<void> {
+	public async refreshUserSession(
+
+	): Promise<void> {
 		const session = await authClient.getSession();
 
 		this.session$$_.next(session.data?.user ?? null);
