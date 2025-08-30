@@ -1,0 +1,25 @@
+:host {
+
+    h1{
+        text-align: center;
+    }
+
+    ul,
+    ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #buttons{
+        display: flex;
+        flex-direction: row;;
+        gap: 15px;
+    }
+}

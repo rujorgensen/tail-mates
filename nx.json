@@ -102,6 +102,14 @@
 			"linter": "none",
 			"style": "scss",
 			"unitTestRunner": "vitest"
+		},
+		"@nx/angular:library": {
+			"linter": "none",
+			"unitTestRunner": "none"
+		},
+		"@nx/angular:component": {
+			"style": "scss",
+			"changeDetection": "OnPush"
 		}
 	},
 	"namedInputs": {

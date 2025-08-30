@@ -1,41 +1,50 @@
 {
-	"compileOnSave": false,
-	"compilerOptions": {
-		"baseUrl": ".",
-		"rootDir": ".",
-		"sourceMap": true,
-		"declaration": false,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"importHelpers": true,
-		"target": "es2015",
-		"module": "esnext",
-		"lib": [
-			"es2020",
-			"dom"
-		],
-		"skipLibCheck": true,
-		"skipDefaultLibCheck": true,
-		"strictNullChecks": true,
-		"strict": true,
-		"paths": {
-			"@backend/auth": [
-				"libs/backend/auth/src/index.ts"
-			],
-			"@prisma-types/tail-mates": [
-				"node_modules/@prisma-types/tail-mates"
-			],
-			"@tail-mates/web-components": [
-				"libs/frontend/web-components/src/index.ts"
-			],
-			"@tail-mates/web-components/draggable-drawer": [
-				"libs/frontend/web-components/src/layout/index.ts"
-			]
-		}
-	},
-	"exclude": [
-		"node_modules",
-		"tmp"
-	]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "paths": {
+      "@backend/auth": [
+        "libs/backend/auth/src/index.ts"
+      ],
+      "@prisma-types/tail-mates": [
+        "node_modules/@prisma-types/tail-mates"
+      ],
+      "@tail-mates/web-components": [
+        "libs/frontend/web-components/src/index.ts"
+      ],
+      "@tail-mates/web-components/draggable-drawer": [
+        "libs/frontend/web-components/src/layout/index.ts"
+      ],
+      "@tailmates/frontend/ui/components": [
+        "libs/frontend/ui/components/src/index.ts"
+      ],
+      "@tailmates/frontend/ui/icons": [
+        "libs/frontend/ui/icons/src/index.ts"
+      ],
+      "@tailmates/frontend/ui/smart-components": [
+        "libs/frontend/ui/smart-components/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

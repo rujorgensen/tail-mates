@@ -1,0 +1,13 @@
+{
+  "name": "tailmates-frontend-ui-components",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/frontend/ui/components/src",
+  "prefix": "tm",
+  "tags": [
+    "type:ui",
+    "scope:frontend"
+  ],
+  "projectType": "library",
+  "// targets": "to see all targets run: nx show project tailmates-frontend-ui-components --web",
+  "targets": {}
+}

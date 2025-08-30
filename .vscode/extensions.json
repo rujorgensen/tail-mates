@@ -1,13 +1,15 @@
 {
-	"recommendations": [
-		"biomejs.biome",
-		"ms-playwright.playwright",
-		"prisma.prisma",
-		"angular.ng-template",
-		"aaron-bond.better-comments",
-		"matthewpi.caddyfile-support"
-	],
-	"unwantedRecommendations": [
-		"esbenp.prettier-vscode"
-	]
+  "recommendations": [
+    "biomejs.biome",
+    "ms-playwright.playwright",
+    "prisma.prisma",
+    "angular.ng-template",
+    "aaron-bond.better-comments",
+    "matthewpi.caddyfile-support",
+    "nrwl.angular-console",
+    "alexiv.vscode-angular2-files"
+  ],
+  "unwantedRecommendations": [
+    "esbenp.prettier-vscode"
+  ]
 }

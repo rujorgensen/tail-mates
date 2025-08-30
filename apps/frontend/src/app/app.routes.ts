@@ -13,6 +13,20 @@ export const appRoutes: Route[] = [
 						(m) => m.MainComponent,
 					),
 			},
+			{
+				path: 'dog-profile',
+				loadComponent: () =>
+					import('./_pages/dog-profile/dog-profile.component').then(
+						(m) => m.DogProfileComponent,
+					),
+			},
+			{
+				path: 'profile',
+				loadComponent: () =>
+					import('./_pages/profile/profile.component').then(
+						(m) => m.ProfileComponent,
+					),
+			},
 		],
 	},
 

@@ -1,0 +1,10 @@
+{
+    "defaults": {
+        "styleExt": "scss",
+        "component": {
+            "spec": true,
+            "style": "scss",
+            "changeDetection": "OnPush"
+        }
+    }
+}

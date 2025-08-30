@@ -1,9 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
-	ChangeDetectionStrategy,
-	Component,
-	inject,
-	PLATFORM_ID,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  PLATFORM_ID,
 } from '@angular/core';
 
 declare const L: any;
@@ -11,9 +11,9 @@ declare const L: any;
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-	styleUrls: [
-		'./map.component.scss',
-	],
+  styleUrls: [
+    './map.component.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent {
@@ -31,14 +31,16 @@ export class MapComponent {
 
     if (this.isBrowser) {
       setTimeout(() => {
-				console.log('Initializing map');
+        console.log('Initializing map');
         this.initializeMap();
       }, 10);
     }
   }
 
   /**
-   * Wait for both DOM and Leaflet to be ready 
+   * Wait for both DOM and Leaflet to be ready
+   * 
+   * @returns { void }
    */
   private initializeMap(
 
@@ -60,17 +62,7 @@ export class MapComponent {
           subdomains: ['a', 'b', 'c'],
         }).addTo(map);
 
-        // Add a marker for the default location
-        const marker = L.marker([55.6761, 12.5683])
-          .addTo(map)
-          .bindPopup(
-            '<strong>Welcome to Tail Mates!</strong><br/>Find your perfect tail mate here.',
-          );
-
-        // Optional: Open popup after a short delay
-        setTimeout(() => {
-          marker.openPopup();
-        }, 1000);
+        this.addMarker(map);
 
         // Handle resize events
         window.addEventListener('resize', () => {
@@ -85,6 +77,22 @@ export class MapComponent {
       // Retry after a short delay if Leaflet isn't loaded yet
       setTimeout(this.initializeMap.bind(this), 100);
     }
+  }
+
+  public addMarker(
+    map: any,
+  ): void {
+    // Add a marker for the default location
+    const marker = L.marker([55.6761, 12.5683])
+      .addTo(map)
+      .bindPopup(
+        '<strong>Welcome to Tail Mates!</strong><br/>Find your perfect tail mate here.',
+      );
+
+    // Optional: Open popup after a short delay
+    setTimeout(() => {
+      marker.openPopup();
+    }, 1000);
   }
 
 }

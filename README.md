@@ -32,10 +32,15 @@ Inside of the project, you'll see the following folders and files:
 │       └── src/
 │
 ├── libs/
-│   └── frontend/
-│       └── web-components/     # Reusable UI components library
+│   └── frontend/               # Frontend applications
+│       ├── ui/
+│       │   ├── components/         # Simple components, eg. checkbox, button ...
+│       │   ├── smart-components/   # More complex, eg. image selector ...
+│       │   └── icons/              # Icons
+│       └── web-components/         # Reusable UI components library
 │
 ├── docs/                       # Documentation
+├── .angular-cli.json           # Only configuration for the "alexiv.vscode-angular2-files"-extension
 └── package.json
 ```
 

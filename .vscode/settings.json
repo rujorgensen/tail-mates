@@ -5,5 +5,10 @@
 		"editor.formatOnSave": true,
 		"editor.formatOnPaste": false,
 		"editor.defaultFormatter": "vscode.html-language-features"
-	}
+	},
+	"angular2-files.menu.class": false,
+	"angular2-files.menu.enum": false,
+	"angular2-files.menu.interface": false,
+	"angular2-files.menu.module": false,
+	"angular2-files.menu.route": false
 }
