@@ -26,6 +26,9 @@
       "@prisma-types/tail-mates": [
         "node_modules/@prisma-types/tail-mates"
       ],
+      "@shared/interfaces": [
+        "libs/tailmates/shared/interfaces/src/index.ts"
+      ],
       "@tail-mates/web-components": [
         "libs/frontend/web-components/src/index.ts"
       ],

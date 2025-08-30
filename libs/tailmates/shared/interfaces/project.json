@@ -1,0 +1,13 @@
+{
+	"name": "shared-interfaces",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/tailmates/shared/interfaces/src",
+	"projectType": "library",
+	"tags": [
+		"type:interfaces",
+		"scope:shared",
+		"app:tailmates"
+	],
+	"// targets": "to see all targets run: nx show project shared-interfaces --web",
+	"targets": {}
+}
