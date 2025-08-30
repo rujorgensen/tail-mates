@@ -7,7 +7,7 @@ describe('DogProfileComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [DogProfileComponent]
+      imports: [DogProfileComponent]
     })
       .compileComponents();
 

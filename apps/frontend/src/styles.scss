@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /* CSS Custom Properties */
-
-@import "@flaticon/flaticon-uicons/css/all/all";
+@use '@flaticon/flaticon-uicons/css/all/all' as *;
 
 :root {
 }
