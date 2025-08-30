@@ -23,10 +23,10 @@
       "@backend/auth": [
         "libs/backend/auth/src/index.ts"
       ],
-      "@prisma-types/tail-mates": [
-        "node_modules/@prisma-types/tail-mates"
+      "@prisma-types/tailmates": [
+        "node_modules/@prisma-types/tailmates"
       ],
-      "@shared/interfaces": [
+      "@tailmates/shared/interfaces": [
         "libs/tailmates/shared/interfaces/src/index.ts"
       ],
       "@tail-mates/web-components": [

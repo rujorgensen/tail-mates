@@ -3,6 +3,11 @@ import { type Context, Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
 import packageJson from '../../../package.json';
 
+// The api routes
+import { dogsController } from './api/dogs.controller';
+import { usersController } from './api/users.controller';
+import { eventsController } from './api/events.controller';
+
 if (Bun.env.NODE_ENV !== 'production' && Bun.env.NODE_ENV !== 'development') {
 	throw new Error('NODE_ENV has to be either "production" or "development"');
 }
@@ -26,25 +31,6 @@ const betterAuth = new Elysia({
 		context.status(405);
 
 		return undefined;
-	})
-
-	.macro({
-		auth: {
-			async resolve({ status, request: { headers } }) {
-				const session = await auth.api.getSession({
-					headers,
-				});
-
-				if (!session) {
-					return status(401);
-				}
-
-				return {
-					user: session.user,
-					session: session.session,
-				};
-			},
-		},
 	});
 
 const app = new Elysia()
@@ -55,14 +41,16 @@ const app = new Elysia()
 			Bun.env.NODE_ENV === 'production'
 				? undefined
 				: {
-						origin: 'localhost:3101',
-						methods: [
-							'GET',
-							'POST',
-						],
-					},
+					origin: 'localhost:3101',
+					methods: [
+						'GET',
+						'POST',
+					],
+				},
 		),
 	)
+
+	.use(dogsController)
 
 	.get('/', () => 'Hello Elysia')
 	.listen(3100);

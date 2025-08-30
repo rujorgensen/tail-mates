@@ -13,6 +13,7 @@ Table user {
   sessions session [not null]
   accounts account [not null]
   dogs Dog [not null]
+  caretakerOf Dog [not null]
 }
 
 Table session {
@@ -57,13 +58,14 @@ Table Dog {
   id String [pk]
   owner user [not null]
   ownerId String [not null]
+  caretakers user [not null]
   imageUrl String [not null]
   name String [not null]
   birthDate DateTime [not null]
   size ESize [not null]
   favouriteActivity String
   gender EGender [not null]
-  neutered Boolean [not null, default: false]
+  neutered Boolean [not null]
   joinedEvents JoinedEvent [not null]
 
   Note: '*
@@ -101,6 +103,11 @@ Table Location {
   latitude Float [not null]
   longitude Float [not null]
   events Event [not null]
+}
+
+Table DogToUser {
+  caretakerofId String [ref: > Dog.id]
+  caretakersId String [ref: > user.id]
 }
 
 Enum EGender {
